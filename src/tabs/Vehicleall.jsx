@@ -193,7 +193,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 function Vehicleall() {
-  const { vehicles, setVehicles, user,  } =
+  const { vehicles, setVehicles, user, } =
     useItemContext();
   const navigate = useNavigate();
   //const [vehicles, setVehicles] = useState([]);
@@ -219,7 +219,7 @@ function Vehicleall() {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await fetch("http://localhost:5000/vehicle/all", {
+        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/all", {
           method: "GET",
           credentials: "include",
         });
@@ -245,7 +245,7 @@ function Vehicleall() {
     }
 
     if (user?.role !== "admin") {
-     navigate("/dashbord/notauthorized");
+      navigate("/dashbord/notauthorized");
       return;
     }
 
@@ -261,7 +261,7 @@ function Vehicleall() {
 
   return (
     <div className="p-2 sm:p-4">
-      
+
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
         <p className="text-gray-600 text-sm sm:text-base">
@@ -353,23 +353,22 @@ function Vehicleall() {
                     <button
                       onClick={() => tab(vehicle)}
                       disabled={vehicle.status === "approved"}
-                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${
-                        vehicle.status === "approved"
+                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vehicle.status === "approved"
                           ? "bg-green-600 cursor-not-allowed"
                           : vehicle.status === "rejected"
-                          ? "bg-red-600"
-                          : vehicle.status === "pending"
-                          ? "bg-yellow-500"
-                          : "bg-slate-800"
-                      }`}
+                            ? "bg-red-600"
+                            : vehicle.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-slate-800"
+                        }`}
                     >
                       {vehicle.status === "approved"
                         ? "✅ Approved"
                         : vehicle.status === "rejected"
-                        ? "❌ Rejected"
-                        : vehicle.status === "pending"
-                        ? "⏳ Pending"
-                        : "Action"}
+                          ? "❌ Rejected"
+                          : vehicle.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

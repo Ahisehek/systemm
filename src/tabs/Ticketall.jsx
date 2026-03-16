@@ -188,7 +188,7 @@ import { useItemContext } from "@/context/ItemContext";
 import { io } from "socket.io-client";
 
 function Ticketall() {
-  const { tickets, setTickets, user,  } =
+  const { tickets, setTickets, user, } =
     useItemContext();
   const navigate = useNavigate();
   //const [tickets, setTickets] = useState([]);
@@ -214,7 +214,7 @@ function Ticketall() {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await fetch("http://localhost:5000/ticket/all", {
+        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/all", {
           method: "GET",
           credentials: "include",
         });
@@ -242,7 +242,7 @@ function Ticketall() {
     }
 
     if (user?.role !== "admin") {
-     navigate("/dashbord/notauthorized");
+      navigate("/dashbord/notauthorized");
       return;
     }
 
@@ -258,7 +258,7 @@ function Ticketall() {
 
   return (
     <div className="p-2 sm:p-4">
-    
+
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
         <p className="text-gray-600 text-sm sm:text-base">
@@ -313,7 +313,7 @@ function Ticketall() {
                     {ticket.concernType}
                   </td>
                   <td className="p-1 border">{ticket.description}</td>
-                  
+
                   {/* <td className="p-1 border whitespace-nowrap">
                     {ticket.attachment ? (
                       <div className="flex flex-col items-center space-y-1">
@@ -337,23 +337,22 @@ function Ticketall() {
                     <button
                       onClick={() => tab(ticket)}
                       disabled={ticket.status === "approved"}
-                      className={`px-2 py-1 rounded-full text-white text-xs sm:text-sm ${
-                        ticket.status === "approved"
+                      className={`px-2 py-1 rounded-full text-white text-xs sm:text-sm ${ticket.status === "approved"
                           ? "bg-green-600 cursor-not-allowed"
                           : ticket.status === "rejected"
-                          ? "bg-red-600"
-                          : ticket.status === "pending"
-                          ? "bg-yellow-500"
-                          : "bg-slate-800"
-                      }`}
+                            ? "bg-red-600"
+                            : ticket.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-slate-800"
+                        }`}
                     >
                       {ticket.status === "approved"
                         ? "✅ Approved"
                         : ticket.status === "rejected"
-                        ? "❌ Rejected"
-                        : ticket.status === "pending"
-                        ? "⏳ Pending"
-                        : "Action"}
+                          ? "❌ Rejected"
+                          : ticket.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

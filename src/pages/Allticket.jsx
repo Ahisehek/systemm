@@ -26,7 +26,7 @@ function Allticket() {
 
   const updateItemStatus = async (status) => {
     try {
-      const res = await fetch(`http://localhost:5000/ticket/status/${ticket._id}`, {
+      const res = await fetch(`https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/status/${ticket._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -59,10 +59,10 @@ function Allticket() {
         <DetailField label="Contact No" value={ticket.contactNo} />
         <DetailField label="Concern Type" value={ticket.concernType} />
         <DetailField label="Description" value={ticket.description} />
-       <DetailField
-  label="Created At"
-  value={new Date(ticket.createdAt).toLocaleString()}
-/>
+        <DetailField
+          label="Created At"
+          value={new Date(ticket.createdAt).toLocaleString()}
+        />
       </div>
 
       <div className="mt-6">

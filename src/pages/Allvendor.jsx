@@ -28,7 +28,7 @@ function Allvendor() {
   const updateItemStatus = async (status) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/vender/status/${vendor._id}`,
+        `https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/status/${vendor._id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -80,9 +80,9 @@ function Allvendor() {
         {/* <DetailField label="ITR Declaration" value={vendor.itrDeclaration} /> */}
         <DetailField label="MSME Type" value={vendor.msmeType} />
         <DetailField
-  label="Created At"
-  value={new Date(vendor.createdAt).toLocaleString()}
-/>
+          label="Created At"
+          value={new Date(vendor.createdAt).toLocaleString()}
+        />
         {/* <DetailField label="Major Activity" value={vendor.majorActivity} /> */}
       </div>
 

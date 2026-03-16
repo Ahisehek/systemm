@@ -39,7 +39,7 @@ const VendorForm = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("http://localhost:5000/site/allsite");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -52,7 +52,7 @@ const VendorForm = () => {
   useEffect(() => {
     const fetchBanks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/list");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/list");
         const data = await res.json();
         setBankList(data);
       } catch (err) {
@@ -111,7 +111,7 @@ const VendorForm = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/vender/add", {
+      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/add", {
         method: "POST",
         body: form,
       });
@@ -120,7 +120,7 @@ const VendorForm = () => {
 
       const data = await res.json();
       console.log("Vendor Added:", data);
-    
+
 
       setFormData({
         siteName: "",
@@ -173,7 +173,7 @@ const VendorForm = () => {
                 Site Name
               </label>
               <select
-              required
+                required
                 name="siteName"
                 value={formData.siteName}
                 onChange={handleInputChange}
@@ -193,7 +193,7 @@ const VendorForm = () => {
                 Account Group
               </label>
               <select
-              required
+                required
                 name="accountGroup"
                 value={formData.accountGroup}
                 onChange={handleInputChange}
@@ -217,7 +217,7 @@ const VendorForm = () => {
                 GST State
               </label>
               <select
-              required
+                required
                 name="gstState"
                 value={formData.gstState}
                 onChange={handleInputChange}
@@ -269,7 +269,7 @@ const VendorForm = () => {
             <div>
               <label className="text-gray-700 font-medium mb-1">GST No</label>
               <input
-              required
+                required
                 type="text"
                 name="gstNo"
                 value={formData.gstNo}
@@ -283,7 +283,7 @@ const VendorForm = () => {
                 Bank Name
               </label>
               <select
-              required
+                required
                 name="bankName"
                 value={formData.bankName}
                 onChange={handleInputChange}
@@ -301,7 +301,7 @@ const VendorForm = () => {
             <div>
               <label className="text-gray-700 font-medium mb-1">TDS</label>
               <select
-              
+
                 name="tds"
                 value={formData.tds}
                 required
@@ -343,7 +343,7 @@ const VendorForm = () => {
                   {label}
                 </label>
                 <input
-                required
+                  required
                   type="text"
                   name={field}
                   value={formData[field]}
@@ -360,7 +360,7 @@ const VendorForm = () => {
           <div>
             <label className="text-gray-700 font-medium mb-1 block">MSME</label>
             <select
-            required
+              required
               name="msme"
               value={formData.msme}
               onChange={handleInputChange}
@@ -379,7 +379,7 @@ const VendorForm = () => {
                 MSME Type
               </label>
               <select
-              required
+                required
                 name="msmeType"
                 value={formData.msmeType}
                 onChange={handleInputChange}
@@ -406,7 +406,7 @@ const VendorForm = () => {
                   {label}
                 </label>
                 <input
-                required
+                  required
                   type="file"
                   id={field}
                   name={field}

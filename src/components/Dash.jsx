@@ -24,12 +24,12 @@ function Dash() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/user-profile", {
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/user-profile", {
           credentials: "include", // ⬅️ sends cookies
         });
 
         const data = await res.json();
-       // console.log("Fetched user data:", data); // ✅ Check this in dev tools
+        // console.log("Fetched user data:", data); // ✅ Check this in dev tools
 
         if (res.ok) {
           setUser(data);
@@ -52,7 +52,7 @@ function Dash() {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/logout", {
+      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/logout", {
         method: "GET",
         credentials: "include",
       });
@@ -79,11 +79,11 @@ function Dash() {
           <div className="  flex items-center justify-between px-4 sm:px-6 lg:px-10 h-14">
             {/* Logo or Brand */}
             <div className="text-lg sm:text-xl">LOGO
-              
 
-              
+
+
             </div>
-                  {/* <div className="w-50 h-full mix-blend-screen ">
+            {/* <div className="w-50 h-full mix-blend-screen ">
               <img src="../public/dvpl.png" alt="" />
               
             </div> */}
@@ -192,7 +192,7 @@ function Dash() {
                 ) : user.name ? (
                   <p>
                     <span className="font-semibold">{user.name}</span>{" "}
-                  
+
                   </p>
                 ) : (
                   <p className="text-red-500">User not logged in</p>
@@ -274,8 +274,8 @@ function Dash() {
                   {loading
                     ? "Loading user..."
                     : user.name
-                    ? `${user.name} `
-                    : "User not logged in"}
+                      ? `${user.name} `
+                      : "User not logged in"}
                 </p>
                 <Button
                   onClick={() => {

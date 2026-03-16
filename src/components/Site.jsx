@@ -60,7 +60,7 @@
 //   // const handleDelete = (indexToDelete) => {
 //   //   setSites(sites.filter((_, idx) => idx !== indexToDelete));
 //   // };
-  
+
 //   useEffect(() => {
 //     const fetchSites = async () => {
 //       try {
@@ -115,7 +115,7 @@
 //       const response = await fetch(`${API_URL}/${siteId}`, {
 //         method: "DELETE",
 //         credentials:"include",
-      
+
 //       });
 
 //       if (!response.ok) {
@@ -143,7 +143,7 @@
 //         <div>
 //           <label>Name:</label>
 //           <input
-          
+
 //             type="text"
 //             placeholder="Enter full name"
 //             value={fullName}
@@ -154,7 +154,7 @@
 //         <div>
 //           <label>State:</label>
 //           <input
-           
+
 //             type="text"
 //             placeholder="Enter sort name"
 //             value={sortName}
@@ -243,7 +243,7 @@ function Repo() {
   const [sortName, setSortName] = useState("");
   const [sites, setSites] = useState([]);
 
-  const API_URL = "http://localhost:5000/site";
+  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/site";
 
   useEffect(() => {
     const fetchSites = async () => {
@@ -401,9 +401,8 @@ function Repo() {
                   return (
                     <tr
                       key={index}
-                      className={`${
-                        isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
-                      } transition cursor-pointer`}
+                      className={`${isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
+                        } transition cursor-pointer`}
                     >
                       <td className="border-b px-4 py-2 text-center">
                         {site.sortName}

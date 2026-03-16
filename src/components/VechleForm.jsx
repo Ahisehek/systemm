@@ -45,7 +45,7 @@ function VehicleForm() {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("http://localhost:5000/site/allsite");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -59,7 +59,7 @@ function VehicleForm() {
   useEffect(() => {
     const fetchFleets = async () => {
       try {
-        const res = await fetch("http://localhost:5000/fleet/fleetlist");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/fleet/fleetlist");
         const data = await res.json();
         setFleetList(data);
       } catch (err) {
@@ -109,7 +109,7 @@ function VehicleForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/vehicle/add", {
+      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/add", {
         method: "POST",
         body: form,
       });
@@ -151,7 +151,7 @@ function VehicleForm() {
             <div>
               <label className="text-gray-700 mb-1 font-medium">Make</label>
               <input
-              required
+                required
                 type="text"
                 name="make"
                 value={formData.make}
@@ -163,7 +163,7 @@ function VehicleForm() {
             <div>
               <label className="text-gray-700 mb-1 font-medium">Model</label>
               <input
-              required
+                required
                 type="text"
                 name="model"
                 value={formData.model}
@@ -175,7 +175,7 @@ function VehicleForm() {
             <div>
               <label className="text-gray-700 mb-1 font-medium">Sub Contractor Name</label>
               <input
-              required
+                required
                 type="text"
                 name="subContractorName"
                 value={formData.subContractorName}
@@ -187,7 +187,7 @@ function VehicleForm() {
             <div className="md:col-span-2">
               <label className="text-gray-700 mb-1 font-medium">Registration / Serial No</label>
               <input
-              required
+                required
                 type="text"
                 name="registrationNo"
                 value={formData.registrationNo}
@@ -202,7 +202,7 @@ function VehicleForm() {
             <div>
               <label className="text-gray-700 mb-1 font-medium">Site Name</label>
               <select
-              required
+                required
                 name="siteName"
                 value={formData.siteName}
                 onChange={handleChange}
@@ -220,7 +220,7 @@ function VehicleForm() {
             <div>
               <label className="text-gray-700 mb-1 font-medium">Fleet Category</label>
               <select
-              required
+                required
                 name="machineCategory"
                 value={formData.machineCategory}
                 onChange={handleChange}
@@ -246,8 +246,8 @@ function VehicleForm() {
               <div key={field}>
                 <label className="text-gray-700 font-medium mb-1 block">{label}</label>
                 <input
-                required
-                
+                  required
+
                   type="file"
                   id={field}
                   name={field}

@@ -28,7 +28,7 @@ function Itemall() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("http://localhost:5000/item/all", {
+        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/all", {
           method: "GET",
           credentials: "include",
         });
@@ -135,23 +135,22 @@ function Itemall() {
                     <button
                       onClick={() => tab(item)}
                       disabled={item.status === "approved"}
-                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${
-                        item.status === "approved"
+                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${item.status === "approved"
                           ? "bg-green-600 cursor-not-allowed"
                           : item.status === "rejected"
-                          ? "bg-red-600"
-                          : item.status === "pending"
-                          ? "bg-yellow-500"
-                          : "bg-slate-800"
-                      }`}
+                            ? "bg-red-600"
+                            : item.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-slate-800"
+                        }`}
                     >
                       {item.status === "approved"
                         ? "✅ Approved"
                         : item.status === "rejected"
-                        ? "❌ Rejected"
-                        : item.status === "pending"
-                        ? "⏳ Pending"
-                        : "Action"}
+                          ? "❌ Rejected"
+                          : item.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

@@ -13,8 +13,8 @@
 
 
 
-  
-  
+
+
 //    const API_URL = "http://localhost:5000/api";
 
 //   // Fetch banks on component mount
@@ -78,9 +78,9 @@
 //       console.error(err);
 //     }
 //   };
-  
 
-  
+
+
 //   return (
 //     <>
 //       <div className="font-serif ">
@@ -200,7 +200,7 @@ function Bank() {
   const [bankList, setBankList] = useState([]);
   const [selectedBank, setSelectedBank] = useState(null);
 
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/api";
 
   useEffect(() => {
     fetchBanks();
@@ -328,9 +328,8 @@ function Bank() {
                     return (
                       <tr
                         key={index}
-                        className={`${
-                          isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
-                        } cursor-pointer transition`}
+                        className={`${isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
+                          } cursor-pointer transition`}
                         onClick={() => setSelectedBank(bank)}
                       >
                         <td className="px-4 py-2 border-b border-slate-200">

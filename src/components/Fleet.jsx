@@ -15,7 +15,7 @@
 
 
 
-  
+
 //    const API_URL = "http://localhost:5000/fleet";
 
 //   // Fetch fleets on component mount
@@ -78,9 +78,9 @@
 //       console.error(err);
 //     }
 //   };
-  
 
-  
+
+
 //   return (
 //     <>
 //       <div className="font-serif ">
@@ -199,7 +199,7 @@ function Fleet() {
   const [fleetList, setFleetList] = useState([]);
   const [selectedFleet, setSelectedFleet] = useState(null);
 
-  const API_URL = "http://localhost:5000/fleet";
+  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/fleet";
 
   useEffect(() => {
     fetchFleets();
@@ -325,9 +325,8 @@ function Fleet() {
                     return (
                       <tr
                         key={index}
-                        className={`${
-                          isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
-                        } cursor-pointer transition`}
+                        className={`${isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
+                          } cursor-pointer transition`}
                         onClick={() => setSelectedFleet(fleet)}
                       >
                         <td className="px-4 py-2 border-b border-slate-200">

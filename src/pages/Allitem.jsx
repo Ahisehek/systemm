@@ -9,9 +9,9 @@ function AllItems() {
   const { updateItemStatusInContext, items, removeItem } = useItemContext();
   const { state } = useLocation();
   const navigate = useNavigate();
-const item = state?.item;
+  const item = state?.item;
 
- // const item = items.find((i) => i._id === state?.id);
+  // const item = items.find((i) => i._id === state?.id);
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -36,7 +36,7 @@ const item = state?.item;
 
   const updateItemStatus = async (status) => {
     try {
-      const res = await fetch(`http://localhost:5000/item/status/${item._id}`, {
+      const res = await fetch(`https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/status/${item._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const item = state?.item;
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Item Details</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        
+
         <DetailField label="Name" value={item.itemName} />
         <DetailField label="Group" value={item.itemGroup} />
         <DetailField label="GST" value={item.gst} />
@@ -87,9 +87,9 @@ const item = state?.item;
         <DetailField label="Parts No" value={item.partsNo} />
         <DetailField label="Unit" value={item.unit} />
         <DetailField
-  label="Created At"
-  value={new Date(item.createdAt).toLocaleString()}
-/>
+          label="Created At"
+          value={new Date(item.createdAt).toLocaleString()}
+        />
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-6">

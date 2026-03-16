@@ -27,7 +27,7 @@ function TicketForm() {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("http://localhost:5000/site/allsite");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -85,7 +85,7 @@ function TicketForm() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/ticket/add", {
+      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/add", {
         method: "POST",
         body: form,
       });
@@ -139,7 +139,7 @@ function TicketForm() {
                   Employee Name <span className="text-red-500">*</span>
                 </label>
                 <input
-                
+
                   type="text"
                   name="employeeName"
                   value={formData.employeeName}
@@ -233,7 +233,7 @@ function TicketForm() {
                   name="attachment"
                   accept=".pdf, image/*"
                   onChange={handleChange}
-                 className="hidden"
+                  className="hidden"
                 />
                 <label
                   htmlFor="attachment"
@@ -241,9 +241,9 @@ function TicketForm() {
                 >
                   Choose File
                 </label>
-                  <span className="text-gray-600 text-sm truncate max-w-[200px]">
-               {formData.attachment?.name || "No file selected"}
-              </span>
+                <span className="text-gray-600 text-sm truncate max-w-[200px]">
+                  {formData.attachment?.name || "No file selected"}
+                </span>
                 {/* <p className="text-sm text-gray-500">
                 Upload 1 file: PDF or image. Max size 10 MB.
               </p> */}

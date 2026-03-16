@@ -23,21 +23,21 @@ const ItemForm = () => {
   /* ------fetch data form database-------- */
   useEffect(() => {
     const fetchGsts = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/gst/gstlist");
-      const data = await res.json();
-      setGstList(data);
-    } catch (err) {
-      console.error("Failed to fetch gsts:", err);
-    }
-  };
- fetchGsts();
+      try {
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/gst/gstlist");
+        const data = await res.json();
+        setGstList(data);
+      } catch (err) {
+        console.error("Failed to fetch gsts:", err);
+      }
+    };
+    fetchGsts();
   }, []);
 
   useEffect(() => {
     const fetchIgroups = async () => {
       try {
-        const res = await fetch("http://localhost:5000/igroup/list");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/igroup/list");
         const data = await res.json();
         setIgroupList(data);
       } catch (err) {
@@ -50,7 +50,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("http://localhost:5000/site/allsite");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -64,7 +64,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchunits = async () => {
       try {
-        const res = await fetch("http://localhost:5000/unit/allunit");
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/unit/allunit");
         const data = await res.json();
         setunits(data);
       } catch (err) {
@@ -105,7 +105,7 @@ const ItemForm = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:5000/item/add", {
+      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ const ItemForm = () => {
                 Site Name
               </label>
               <select
-              required
+                required
                 name="siteName"
                 value={formData.siteName}
                 onChange={handleChange}
@@ -178,7 +178,7 @@ const ItemForm = () => {
                 Item Name
               </label>
               <input
-              required
+                required
                 type="text"
                 name="itemName"
                 value={formData.itemName}
@@ -194,7 +194,7 @@ const ItemForm = () => {
                 Item Group
               </label>
               <select
-              required
+                required
                 name="itemGroup"
                 value={formData.itemGroup}
                 onChange={handleChange}
@@ -217,14 +217,14 @@ const ItemForm = () => {
                 GST
               </label>
               <select
-              required
+                required
                 name="gst"
                 value={formData.gst}
                 onChange={handleChange}
                 className="w-full border border-gray-300 rounded-md px-3 py-2"
               >
                 <option value="">Select GST rate</option>
-                {gstList.map((gst,idx) => (
+                {gstList.map((gst, idx) => (
                   <option key={idx} value={gst.name}>
                     {gst.name}
                   </option>
@@ -239,7 +239,7 @@ const ItemForm = () => {
                 HSN Code
               </label>
               <input
-              required
+                required
                 type="text"
                 name="hsnCode"
                 value={formData.hsnCode}
@@ -255,7 +255,7 @@ const ItemForm = () => {
                 Parts No
               </label>
               <input
-              required
+                required
                 type="text"
                 name="partsNo"
                 value={formData.partsNo}
@@ -271,7 +271,7 @@ const ItemForm = () => {
                 1st Unit
               </label>
               <select
-              required
+                required
                 name="unit"
                 value={formData.unit}
                 onChange={handleChange}

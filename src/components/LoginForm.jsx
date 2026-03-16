@@ -31,8 +31,8 @@
 //         throw new Error(data.message || "Login failed ");
 //       }
 
-      
-    
+
+
 //       navigate("/dash"); 
 //     } catch (err) {
 //       alert(err.message);
@@ -101,7 +101,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -14,9 +14,9 @@
 
 
 
-  
+
 //   const API_URL = "http://localhost:5000/gst";
-   
+
 //   // Fetch gsts on component mount
 //   useEffect(() => {
 //     fetchGsts();
@@ -78,9 +78,9 @@
 //       console.error(err);
 //     }
 //   };
-  
 
-  
+
+
 //   return (
 //     <>
 //       <div className="font-serif  ">
@@ -200,7 +200,7 @@ function Gst() {
   const [gstList, setGstList] = useState([]);
   const [selectedGst, setSelectedGst] = useState(null);
 
-  const API_URL = "http://localhost:5000/gst";
+  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/gst";
 
   useEffect(() => {
     fetchGsts();
@@ -327,9 +327,8 @@ function Gst() {
                     return (
                       <tr
                         key={index}
-                        className={`${
-                          isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
-                        } cursor-pointer transition`}
+                        className={`${isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
+                          } cursor-pointer transition`}
                         onClick={() => setSelectedGst(gst)}
                       >
                         <td className="px-4 py-2 border-b border-slate-200">

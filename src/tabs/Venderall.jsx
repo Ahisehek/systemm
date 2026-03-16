@@ -162,7 +162,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 function Venderall() {
-  const { vendors, setVendors, user,  } =
+  const { vendors, setVendors, user, } =
     useItemContext();
   const [vendorStatuses, setVendorStatuses] = useState({});
   // const [vendors, setVendors] = useState([]);
@@ -185,7 +185,7 @@ function Venderall() {
   useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const response = await fetch("http://localhost:5000/vender/all", {
+        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/all", {
           method: "GET",
           credentials: "include",
         });
@@ -233,7 +233,7 @@ function Venderall() {
 
   return (
     <div className="p-2 sm:p-4">
-     
+
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
         <p className="text-gray-600 text-sm sm:text-base">
@@ -299,23 +299,22 @@ function Venderall() {
                     <button
                       onClick={() => tab(vendor)}
                       disabled={vendor.status === "approved"}
-                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${
-                        vendor.status === "approved"
+                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vendor.status === "approved"
                           ? "bg-green-600 cursor-not-allowed"
                           : vendor.status === "rejected"
-                          ? "bg-red-600"
-                          : vendor.status === "pending"
-                          ? "bg-yellow-500"
-                          : "bg-slate-800"
-                      }`}
+                            ? "bg-red-600"
+                            : vendor.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-slate-800"
+                        }`}
                     >
                       {vendor.status === "approved"
                         ? "✅ Approved"
                         : vendor.status === "rejected"
-                        ? "❌ Rejected"
-                        : vendor.status === "pending"
-                        ? "⏳ Pending"
-                        : "Action"}
+                          ? "❌ Rejected"
+                          : vendor.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

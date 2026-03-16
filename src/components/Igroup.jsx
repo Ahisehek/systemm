@@ -168,7 +168,7 @@ function Igroup() {
   const [igroupList, setIgroupList] = useState([]);
   const [selectedIgroup, setSelectedIgroup] = useState(null);
 
-  const API_URL = "http://localhost:5000/igroup";
+  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/igroup";
 
   useEffect(() => {
     fetchIgroups();
@@ -292,9 +292,8 @@ function Igroup() {
                     return (
                       <tr
                         key={index}
-                        className={`${
-                          isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
-                        } cursor-pointer transition`}
+                        className={`${isMatch ? "bg-yellow-100" : "hover:bg-slate-100"
+                          } cursor-pointer transition`}
                         onClick={() => setSelectedIgroup(igroup.name)}
                       >
                         <td className="px-4 py-2 border-b border-slate-200">

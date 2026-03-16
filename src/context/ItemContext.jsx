@@ -11,21 +11,21 @@ export const useItemContext = () => useContext(ItemContext);
 
 // 3. Create the provider component
 export const ItemProvider = ({ children }) => {
-  
+
   const [tabAlerts, setTabAlerts] = useState({
-  items: false,
-  vender: false,
-  vehcle: false,
-  ticket: false,
-});
-const setTabAlert = (tabKey, value) => {
-  setTabAlerts((prev) => ({ ...prev, [tabKey]: value }));
-};
+    items: false,
+    vender: false,
+    vehcle: false,
+    ticket: false,
+  });
+  const setTabAlert = (tabKey, value) => {
+    setTabAlerts((prev) => ({ ...prev, [tabKey]: value }));
+  };
 
   const [items, setItems] = useState([]);
-   const [tickets, setTickets] = useState([]);
-   const [vehicles, setVehicles] = useState([]);
-   const [vendors, setVendors] = useState([]);
+  const [tickets, setTickets] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
+  const [vendors, setVendors] = useState([]);
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true)
 
@@ -40,30 +40,30 @@ const setTabAlert = (tabKey, value) => {
   };
 
   useEffect(() => {
-  const fetchUser = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/me", {
-        credentials: "include",
-      });
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/me", {
+          credentials: "include",
+        });
 
-      if (!res.ok) throw new Error("something went wrong");
+        if (!res.ok) throw new Error("something went wrong");
 
-      const data = await res.json();
-      setUser(data);
-    } catch (err) {
-      console.error("Failed to fetch user:", err.message);
-      setUser(null);
-    } finally {
-      setLoadingUser(false); // ✅ set loading to false regardless of outcome
-    }
-  };
+        const data = await res.json();
+        setUser(data);
+      } catch (err) {
+        console.error("Failed to fetch user:", err.message);
+        setUser(null);
+      } finally {
+        setLoadingUser(false); // ✅ set loading to false regardless of outcome
+      }
+    };
 
-  fetchUser();
-}, []);
+    fetchUser();
+  }, []);
 
 
   useEffect(() => {
-    const socket = io("http://localhost:5000", {
+    const socket = io("https://floy-hailstoned-nonelectrically.ngrok-free.dev", {
       withCredentials: true,
     });
 
@@ -75,7 +75,7 @@ const setTabAlert = (tabKey, value) => {
 
       // Update items list if you want to reflect immediately in UI
       setItems((prev) => [...prev, newItem]);
-    
+
       setTabAlert("items", true);
     });
 
@@ -86,43 +86,45 @@ const setTabAlert = (tabKey, value) => {
       });
 
       // Update items list if tickets are part of items or a separate state
-     setTickets((prev) => [...prev, newTicket]);
-    setTabAlert("ticket", true);
+      setTickets((prev) => [...prev, newTicket]);
+      setTabAlert("ticket", true);
     });
-     socket.on("vehicle_added", (newVehicle) => {
-      toast.success(`🎉 New Ticket Added: ${newVehicle.siteName}`, {     
+    socket.on("vehicle_added", (newVehicle) => {
+      toast.success(`🎉 New Ticket Added: ${newVehicle.siteName}`, {
         position: "top-right",
         autoClose: 3000,
       });
 
       // Update items list if tickets are part of items or a separate state
-     setVehicles((prev) => [...prev, newVehicle]);
-    setTabAlert("vehcle", true);
+      setVehicles((prev) => [...prev, newVehicle]);
+      setTabAlert("vehcle", true);
     });
 
-     socket.on("vendor_added", (vender) => {
+    socket.on("vendor_added", (vender) => {
       toast.success(`🎉 New "vendor Added: ${vender.siteName}`, {
         position: "top-right",
         autoClose: 3000,
       });
 
       // Update items list if tickets are part of items or a separate state
-     setVendors((prev) => [...prev, vendors]);
-    setTabAlert("vender", true);
+      setVendors((prev) => [...prev, vendors]);
+      setTabAlert("vender", true);
     });
 
     return () => {
       socket.disconnect();
     };
-  },[setItems, setTabAlert]);
+  }, [setItems, setTabAlert]);
 
   return (
     <ItemContext.Provider
-      value={{ tabAlerts,
-      setTabAlert, items, setItems, tickets, setTickets,vendors, setVendors,vehicles,setVehicles, removeItem,  updateItemStatusInContext, user ,loadingUser}}
+      value={{
+        tabAlerts,
+        setTabAlert, items, setItems, tickets, setTickets, vendors, setVendors, vehicles, setVehicles, removeItem, updateItemStatusInContext, user, loadingUser
+      }}
     >
       {children}
-      <ToastContainer/>
+      <ToastContainer />
     </ItemContext.Provider>
   );
 };

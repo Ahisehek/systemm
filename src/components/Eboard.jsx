@@ -23,17 +23,17 @@ function Eboard() {
   // Fetch all data
   useEffect(() => {
     const fetchAllData = async () => {
-      try { 
+      try {
         const [itemsRes, vendorsRes, vehiclesRes, ticketsRes] =
           await Promise.all([
-            fetch("http://localhost:5000/item/all", { credentials: "include" }),
-            fetch("http://localhost:5000/vender/all", {
+            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/all", { credentials: "include" }),
+            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/all", {
               credentials: "include",
             }),
-            fetch("http://localhost:5000/vehicle/all", {
+            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/all", {
               credentials: "include",
             }),
-            fetch("http://localhost:5000/ticket/all", {
+            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/all", {
               credentials: "include",
             }),
           ]);
@@ -48,6 +48,7 @@ function Eboard() {
         setData({ items, vendors, vehicles, tickets });
         setLoading(false);
       } catch (err) {
+        console.log(err);
         //console.error("Failed to fetch data:", err);
         setError("Error fetching data");
         setLoading(false);

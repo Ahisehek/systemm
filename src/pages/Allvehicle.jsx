@@ -25,7 +25,7 @@ function Allvehicle() {
   const updateItemStatus = async (status) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/vehicle/status/${vehicle._id}`,
+        `https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/status/${vehicle._id}`,
         {
           method: "PATCH",
           headers: {
@@ -67,10 +67,10 @@ function Allvehicle() {
         <DetailField label="Registration No" value={vehicle.registrationNo} />
         <DetailField label="Site Name" value={vehicle.siteName} />
         <DetailField label="Machine Category" value={vehicle.machineCategory} />
-      <DetailField
-  label="Created At"
-  value={new Date(vehicle.createdAt).toLocaleString()}
-/>
+        <DetailField
+          label="Created At"
+          value={new Date(vehicle.createdAt).toLocaleString()}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
@@ -87,7 +87,7 @@ function Allvehicle() {
           file={vehicle.assetPics?.licencePic}
         />
       </div>
-    
+
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
         <button
