@@ -1,0 +1,130 @@
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useItemContext } from "../context/ItemContext";
+import CopyButton from "@/components/CopyButton";
+
+function Allticket() {
+  const { updateItemStatusInContext } = useItemContext();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+
+  const ticket = state?.ticket;
+
+  if (!ticket) {
+    return (
+      <div className="p-4 text-center">
+        <p className="text-red-600 font-medium">No ticket data found.</p>
+        <button
+          onClick={() => navigate(-1)}
+          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        >
+          Go Back
+        </button>
+      </div>
+    );
+  }
+
+  const updateItemStatus = async (status) => {
+    try {
+      const res = await fetch(`http://localhost:5000/ticket/status/${ticket._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ status }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update ticket status");
+
+      updateItemStatusInContext(ticket._id, status);
+      navigate(-1);
+    } catch (err) {
+      console.error(err);
+      alert("Error updating ticket status");
+    }
+  };
+
+  const handleApprove = () => updateItemStatus("approved");
+  const handlePending = () => updateItemStatus("pending");
+  const handleReject = () => updateItemStatus("rejected");
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md text-black">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Ticket Details</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <DetailField label="Site Name" value={ticket.siteName} />
+        <DetailField label="Employee Name" value={ticket.employeeName} />
+        <DetailField label="Contact No" value={ticket.contactNo} />
+        <DetailField label="Concern Type" value={ticket.concernType} />
+        <DetailField label="Description" value={ticket.description} />
+       <DetailField
+  label="Created At"
+  value={new Date(ticket.createdAt).toLocaleString()}
+/>
+      </div>
+
+      <div className="mt-6">
+        <p className="font-bold mb-2">Attachment:</p>
+        {ticket.attachment ? (
+          <button
+            onClick={() =>
+              window.open(
+                `http://localhost:5000/uploads/ticketPics/${ticket.attachment}`,
+                "_blank"
+              )
+            }
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            View Attachment
+          </button>
+        ) : (
+          <p className="text-gray-600">No File</p>
+        )}
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-3 mt-8">
+        <button
+          onClick={() => navigate(-1)}
+          className="px-5 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+        >
+          Back
+        </button>
+        <button
+          onClick={handleApprove}
+          className="px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+        >
+          Approve
+        </button>
+        <button
+          onClick={handlePending}
+          className="px-5 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+        >
+          Pending
+        </button>
+        <button
+          onClick={handleReject}
+          className="px-5 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+        >
+          Reject
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Allticket;
+
+// ✅ Reusable styled detail field with copy support
+const DetailField = ({ label, value }) => {
+  return (
+    <div className="bg-gray-100 p-3 rounded shadow-sm flex justify-between items-center">
+      <div>
+        <p className="text-sm text-gray-600">{label}</p>
+        <p className="text-base font-medium text-gray-800 break-words">{value}</p>
+      </div>
+      <CopyButton text={value} />
+    </div>
+  );
+};
