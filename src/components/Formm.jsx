@@ -24,7 +24,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchGsts = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/gst/gstlist");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/gst/gstlist");
         const data = await res.json();
         setGstList(data);
       } catch (err) {
@@ -37,7 +37,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchIgroups = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/igroup/list");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/igroup/list");
         const data = await res.json();
         setIgroupList(data);
       } catch (err) {
@@ -50,7 +50,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -64,7 +64,7 @@ const ItemForm = () => {
   useEffect(() => {
     const fetchunits = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/unit/allunit");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/unit/allunit");
         const data = await res.json();
         setunits(data);
       } catch (err) {
@@ -105,7 +105,7 @@ const ItemForm = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/add", {
+      const response = await fetch("https://backendsystem-a26n.onrender.com/item/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

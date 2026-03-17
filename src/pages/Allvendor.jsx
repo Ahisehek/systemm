@@ -28,7 +28,7 @@ function Allvendor() {
   const updateItemStatus = async (status) => {
     try {
       const res = await fetch(
-        `https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/status/${vendor._id}`,
+        `https://backendsystem-a26n.onrender.com/vender/status/${vendor._id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

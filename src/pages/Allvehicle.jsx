@@ -25,7 +25,7 @@ function Allvehicle() {
   const updateItemStatus = async (status) => {
     try {
       const res = await fetch(
-        `https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/status/${vehicle._id}`,
+        `https://backendsystem-a26n.onrender.com/vehicle/status/${vehicle._id}`,
         {
           method: "PATCH",
           headers: {

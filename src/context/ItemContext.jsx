@@ -42,7 +42,7 @@ export const ItemProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/me", {
+        const res = await fetch("https://backendsystem-a26n.onrender.com/api/me", {
           credentials: "include",
         });
 
@@ -63,7 +63,7 @@ export const ItemProvider = ({ children }) => {
 
 
   useEffect(() => {
-    const socket = io("https://floy-hailstoned-nonelectrically.ngrok-free.dev", {
+    const socket = io("https://backendsystem-a26n.onrender.com", {
       withCredentials: true,
     });
 

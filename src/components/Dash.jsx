@@ -24,7 +24,7 @@ function Dash() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/user-profile", {
+        const res = await fetch("https://backendsystem-a26n.onrender.com/api/user-profile", {
           credentials: "include", // ⬅️ sends cookies
         });
 
@@ -52,7 +52,7 @@ function Dash() {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/logout", {
+      const res = await fetch("https://backendsystem-a26n.onrender.com/api/logout", {
         method: "GET",
         credentials: "include",
       });

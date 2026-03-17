@@ -52,7 +52,7 @@ const VendorForm = () => {
   useEffect(() => {
     const fetchBanks = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/list");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/api/list");
         const data = await res.json();
         setBankList(data);
       } catch (err) {
@@ -111,7 +111,7 @@ const VendorForm = () => {
     }
 
     try {
-      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/add", {
+      const res = await fetch("https://backendsystem-a26n.onrender.com/vender/add", {
         method: "POST",
         body: form,
       });

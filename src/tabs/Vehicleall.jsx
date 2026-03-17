@@ -219,7 +219,7 @@ function Vehicleall() {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/all", {
+        const response = await fetch("https://backendsystem-a26n.onrender.com/vehicle/all", {
           method: "GET",
           credentials: "include",
         });
@@ -354,12 +354,12 @@ function Vehicleall() {
                       onClick={() => tab(vehicle)}
                       disabled={vehicle.status === "approved"}
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vehicle.status === "approved"
-                          ? "bg-green-600 cursor-not-allowed"
-                          : vehicle.status === "rejected"
-                            ? "bg-red-600"
-                            : vehicle.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        ? "bg-green-600 cursor-not-allowed"
+                        : vehicle.status === "rejected"
+                          ? "bg-red-600"
+                          : vehicle.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {vehicle.status === "approved"

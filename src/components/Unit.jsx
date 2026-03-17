@@ -243,7 +243,7 @@ function Repo() {
   const [sortName, setSortName] = useState("");
   const [units, setunits] = useState([]);
 
-  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/unit";
+  const API_URL = "https://backendsystem-a26n.onrender.com/unit";
 
   useEffect(() => {
     const fetchunits = async () => {

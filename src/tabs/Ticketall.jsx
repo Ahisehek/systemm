@@ -214,7 +214,7 @@ function Ticketall() {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/all", {
+        const response = await fetch("https://backendsystem-a26n.onrender.com/ticket/all", {
           method: "GET",
           credentials: "include",
         });
@@ -338,12 +338,12 @@ function Ticketall() {
                       onClick={() => tab(ticket)}
                       disabled={ticket.status === "approved"}
                       className={`px-2 py-1 rounded-full text-white text-xs sm:text-sm ${ticket.status === "approved"
-                          ? "bg-green-600 cursor-not-allowed"
-                          : ticket.status === "rejected"
-                            ? "bg-red-600"
-                            : ticket.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        ? "bg-green-600 cursor-not-allowed"
+                        : ticket.status === "rejected"
+                          ? "bg-red-600"
+                          : ticket.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {ticket.status === "approved"

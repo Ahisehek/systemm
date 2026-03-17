@@ -142,7 +142,7 @@ const RegisterForm = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/api/register", {
+      const res = await fetch("https://backendsystem-a26n.onrender.com/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

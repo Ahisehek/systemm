@@ -185,7 +185,7 @@ function Venderall() {
   useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/all", {
+        const response = await fetch("https://backendsystem-a26n.onrender.com/vender/all", {
           method: "GET",
           credentials: "include",
         });
@@ -300,12 +300,12 @@ function Venderall() {
                       onClick={() => tab(vendor)}
                       disabled={vendor.status === "approved"}
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vendor.status === "approved"
-                          ? "bg-green-600 cursor-not-allowed"
-                          : vendor.status === "rejected"
-                            ? "bg-red-600"
-                            : vendor.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        ? "bg-green-600 cursor-not-allowed"
+                        : vendor.status === "rejected"
+                          ? "bg-red-600"
+                          : vendor.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {vendor.status === "approved"

@@ -26,14 +26,14 @@ function Eboard() {
       try {
         const [itemsRes, vendorsRes, vehiclesRes, ticketsRes] =
           await Promise.all([
-            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/all", { credentials: "include" }),
-            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vender/all", {
+            fetch("https://backendsystem-a26n.onrender.com/item/all", { credentials: "include" }),
+            fetch("https://backendsystem-a26n.onrender.com/vender/all", {
               credentials: "include",
             }),
-            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/all", {
+            fetch("https://backendsystem-a26n.onrender.com/vehicle/all", {
               credentials: "include",
             }),
-            fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/all", {
+            fetch("https://backendsystem-a26n.onrender.com/ticket/all", {
               credentials: "include",
             }),
           ]);

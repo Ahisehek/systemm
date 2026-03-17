@@ -26,7 +26,7 @@ function Allticket() {
 
   const updateItemStatus = async (status) => {
     try {
-      const res = await fetch(`https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/status/${ticket._id}`, {
+      const res = await fetch(`https://backendsystem-a26n.onrender.com/ticket/status/${ticket._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

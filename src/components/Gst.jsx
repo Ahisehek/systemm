@@ -200,7 +200,7 @@ function Gst() {
   const [gstList, setGstList] = useState([]);
   const [selectedGst, setSelectedGst] = useState(null);
 
-  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/gst";
+  const API_URL = "https://backendsystem-a26n.onrender.com/gst";
 
   useEffect(() => {
     fetchGsts();

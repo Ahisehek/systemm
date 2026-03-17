@@ -45,7 +45,7 @@ function VehicleForm() {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -59,7 +59,7 @@ function VehicleForm() {
   useEffect(() => {
     const fetchFleets = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/fleet/fleetlist");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/fleet/fleetlist");
         const data = await res.json();
         setFleetList(data);
       } catch (err) {
@@ -109,7 +109,7 @@ function VehicleForm() {
     }
 
     try {
-      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/vehicle/add", {
+      const response = await fetch("https://backendsystem-a26n.onrender.com/vehicle/add", {
         method: "POST",
         body: form,
       });

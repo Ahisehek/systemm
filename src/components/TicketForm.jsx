@@ -27,7 +27,7 @@ function TicketForm() {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
@@ -85,7 +85,7 @@ function TicketForm() {
     }
 
     try {
-      const response = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/ticket/add", {
+      const response = await fetch("https://backendsystem-a26n.onrender.com/ticket/add", {
         method: "POST",
         body: form,
       });

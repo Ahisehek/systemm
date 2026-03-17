@@ -168,7 +168,7 @@ function Igroup() {
   const [igroupList, setIgroupList] = useState([]);
   const [selectedIgroup, setSelectedIgroup] = useState(null);
 
-  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/igroup";
+  const API_URL = "https://backendsystem-a26n.onrender.com/igroup";
 
   useEffect(() => {
     fetchIgroups();

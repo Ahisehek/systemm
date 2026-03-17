@@ -199,7 +199,7 @@ function Fleet() {
   const [fleetList, setFleetList] = useState([]);
   const [selectedFleet, setSelectedFleet] = useState(null);
 
-  const API_URL = "https://floy-hailstoned-nonelectrically.ngrok-free.dev/fleet";
+  const API_URL = "https://backendsystem-a26n.onrender.com/fleet";
 
   useEffect(() => {
     fetchFleets();

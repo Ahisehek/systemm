@@ -36,7 +36,7 @@ function AllItems() {
 
   const updateItemStatus = async (status) => {
     try {
-      const res = await fetch(`https://floy-hailstoned-nonelectrically.ngrok-free.dev/item/status/${item._id}`, {
+      const res = await fetch(`https://backendsystem-a26n.onrender.com/item/status/${item._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
