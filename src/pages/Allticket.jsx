@@ -71,7 +71,7 @@ function Allticket() {
           <button
             onClick={() =>
               window.open(
-                `http://localhost:5000/uploads/ticketPics/${ticket.attachment}`,
+                `https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`,
                 "_blank"
               )
             }

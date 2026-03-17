@@ -145,7 +145,7 @@ const AttachmentField = ({ label, file }) => (
     {file ? (
       <button
         onClick={() =>
-          window.open(`http://localhost:5000/uploads/vendorPics/${file}`, "_blank")
+          window.open(`https://backendsystem-a26n.onrender.com/uploads/vendorPics/${file}`, "_blank")
         }
         className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
       >

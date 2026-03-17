@@ -39,7 +39,7 @@ const VendorForm = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const res = await fetch("https://floy-hailstoned-nonelectrically.ngrok-free.dev/site/allsite");
+        const res = await fetch("https://backendsystem-a26n.onrender.com/site/allsite");
         const data = await res.json();
         setSites(data);
       } catch (err) {
