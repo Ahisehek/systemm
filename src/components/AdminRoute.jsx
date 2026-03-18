@@ -5,13 +5,17 @@ import { useItemContext } from "../context/ItemContext";
 const AdminRoute = ({ children }) => {
   const { user, loadingUser } = useItemContext();
 
-  console.log("AdminRoute: user =", user, "loadingUser =", loadingUser);
+  console.log("AdminRoute:", user);
 
   if (loadingUser) {
-    return <div>Loading user info...</div>; // ⏳ You can use a spinner here
+    return <div>Loading...</div>;
   }
 
-  if (!user || user.role !== "admin") {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (user.role?.toLowerCase() !== "admin") {
     return <Navigate to="/dashbord/notauthorized" replace />;
   }
 

@@ -34,13 +34,13 @@ function App() {
     <>
       <div className="overflow-auto scrollbar-hide h-screen  ">
         <Router>
-          <ToastContainer   position="top-right" autoClose={2000} />
+          <ToastContainer position="top-right" autoClose={2000} />
           <Routes>
             {/* Public routes */}
             <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
-             
+
 
             <Route path="allitems" element={<Allitem />} />
             <Route path="allvenders" element={<Allvendor />} />
@@ -53,67 +53,67 @@ function App() {
               <Route
                 path="master/bank"
                 element={
-                  <AdminRoute>
-                    <Bank />
-                  </AdminRoute>
+
+                  <Bank />
+
                 }
               />
               <Route
                 path="master/unit"
                 element={
-                  <AdminRoute>
-                    <St />
-                  </AdminRoute>
+
+                  <St />
+
                 }
               />
               <Route
                 path="master/site"
                 element={
-                  <AdminRoute>
-                    <Repo />
-                  </AdminRoute>
+
+                  <Repo />
+
                 }
               />
               <Route
                 path="master/profile"
                 element={
-                  <AdminRoute>
-                    <Pro />
-                  </AdminRoute>
+
+                  <Pro />
+
                 }
               />
               <Route path="action" element={<Home />} />
               <Route
                 path="master/gst"
                 element={
-                  <AdminRoute>
-                    <Gst />
-                  </AdminRoute>
+
+                  <Gst />
+
                 }
               />
               <Route
                 path="master/fleet"
                 element={
-                  <AdminRoute>
-                    <Fleet />
-                  </AdminRoute>
+
+                  <Fleet />
+
                 }
               />
               <Route
                 path="master/itemgroup"
                 element={
-                  <AdminRoute>
-                    <Igroup />
-                  </AdminRoute>
+
+                  <Igroup />
+
                 }
               />
 
-              <Route path="entry/item" element={<Formm/>} />
+              <Route path="entry/item" element={<Formm />} />
               <Route path="entry/vender" element={<VenderForm />} />
               <Route path="entry/vehicle" element={<VechleForm />} />
               <Route path="entry/ticket" element={<TicketForm />} />
               <Route path="notauthorized" element={<NotAdminPage />} />
-            
+
 
             </Route>
           </Routes>
