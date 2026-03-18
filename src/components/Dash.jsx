@@ -21,53 +21,53 @@ function Dash() {
 
   //const [bank, setBank] = useState("");
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch("https://backendsystem-a26n.onrender.com/api/user-profile", {
-          credentials: "include", // ⬅️ sends cookies
-        });
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const res = await fetch("https://backendsystem-a26n.onrender.com/api/user-profile", {
+  //         credentials: "include", // ⬅️ sends cookies
+  //       });
 
-        const data = await res.json();
-        // console.log("Fetched user data:", data); // ✅ Check this in dev tools
+  //       const data = await res.json();
+  //       // console.log("Fetched user data:", data); // ✅ Check this in dev tools
 
-        if (res.ok) {
-          setUser(data);
-          //console.log("User role:", data.role);
-        } else {
-          //console.error(data.message);
-          navigate("/");
-          setUser({ name: "", email: "" });
-        }
-      } catch (err) {
-        console.error("Error fetching user:", err);
-        setUser({ name: "", email: "" });
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       if (res.ok) {
+  //         setUser(data);
+  //         //console.log("User role:", data.role);
+  //       } else {
+  //         //console.error(data.message);
+  //         navigate("/");
+  //         setUser({ name: "", email: "" });
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching user:", err);
+  //       setUser({ name: "", email: "" });
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
-  const handleLogout = async () => {
-    try {
-      const res = await fetch("https://backendsystem-a26n.onrender.com/api/logout", {
-        method: "GET",
-        credentials: "include",
-      });
+  // const handleLogout = async () => {
+  //   try {
+  //     const res = await fetch("https://backendsystem-a26n.onrender.com/api/logout", {
+  //       method: "GET",
+  //       credentials: "include",
+  //     });
 
-      if (res.ok) {
-        setUser({ name: "", email: "" });
-        navigate("/login");
-      } else {
-        const data = await res.json();
-        alert(data.message || "Logout failed");
-      }
-    } catch (err) {
-      console.error("Logout error:", err);
-    }
-  };
+  //     if (res.ok) {
+  //       setUser({ name: "", email: "" });
+  //       navigate("/login");
+  //     } else {
+  //       const data = await res.json();
+  //       alert(data.message || "Logout failed");
+  //     }
+  //   } catch (err) {
+  //     console.error("Logout error:", err);
+  //   }
+  // };
 
   return (
     <div className="  ">
