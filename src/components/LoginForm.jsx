@@ -1,89 +1,3 @@
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useItemContext } from "../context/ItemContext";
-
-// const LoginForm = ({ onLogin }) => {
-//   const { setUser } = useItemContext();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   const login = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const res = await fetch("http://localhost:5000/api/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         credentials: "include", // ⬅️ Important to send/receive cookies
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const data = await res.json();
-//       //localStorage.setItem("token", data.token);
-//       setEmail("");
-//       setPassword("");
-
-//       if (!res.ok) {
-//         //navigate("/register");
-//         throw new Error(data.message || "Login failed ");
-//       }
-
-
-
-//       navigate("/dash"); 
-//     } catch (err) {
-//       alert(err.message);
-//     }
-//   };
-//   const handleclick = () => {
-//     navigate("/register");
-//   };
-
-//   return (
-//     <div className=" flex justify-center items-center h-screen">
-//       <form
-//         onSubmit={login}
-//         className="space-y-4 p-4 bg-white shadow-xl shadow-black rounded w-96 border-8 border-slate-700    "
-//       >
-//         <h2 className="text-xl font-bold flex justify-center">Login</h2>
-//         <input
-//           type="email"
-//           placeholder="Email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           className="w-full p-2 border rounded"
-//           required
-//         />
-//         <input
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           className="w-full p-2 border rounded"
-//           required
-//         />
-//         <button
-//           type="submit"
-//           className="w-full bg-blue-950 text-white p-2 rounded"
-//         >
-//           Login
-//         </button>
-//         <button
-//           type=""
-//           onClick={handleclick}
-//           className="w-full bg-green-600 text-white p-2 rounded"
-//         >
-//           Register
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default LoginForm;
 
 
 
@@ -117,6 +31,7 @@ const LoginForm = () => {
       if (!res.ok) {
         throw new Error(data.message || "Login failed");
       }
+      console.log("success");
 
       navigate("/dashbord");
     } catch (err) {
