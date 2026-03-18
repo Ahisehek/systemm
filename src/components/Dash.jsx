@@ -50,24 +50,24 @@ function Dash() {
   //   fetchUser();
   // }, []);
 
-  // const handleLogout = async () => {
-  //   try {
-  //     const res = await fetch("https://backendsystem-a26n.onrender.com/api/logout", {
-  //       method: "GET",
-  //       credentials: "include",
-  //     });
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("https://backendsystem-a26n.onrender.com/api/logout", {
+        method: "GET",
+        credentials: "include",
+      });
 
-  //     if (res.ok) {
-  //       setUser({ name: "", email: "" });
-  //       navigate("/login");
-  //     } else {
-  //       const data = await res.json();
-  //       alert(data.message || "Logout failed");
-  //     }
-  //   } catch (err) {
-  //     console.error("Logout error:", err);
-  //   }
-  // };
+      if (res.ok) {
+        setUser({ name: "", email: "" });
+        navigate("/login");
+      } else {
+        const data = await res.json();
+        alert(data.message || "Logout failed");
+      }
+    } catch (err) {
+      console.error("Logout error:", err);
+    }
+  };
 
   return (
     <div className="  ">
