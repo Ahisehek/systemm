@@ -43,26 +43,20 @@ export const ItemProvider = ({ children }) => {
     );
   };
 
-  // ✅ Fetch logged-in user
-  // useEffect(() => {
-
-
-  //   fetchUser();
-  // }, []);
-
   const fetchUser = async () => {
     try {
       const res = await fetch(
         "https://backendsystem-a26n.onrender.com/api/me",
-        {
-          credentials: "include",
-        }
+        { credentials: "include" }
       );
 
-      if (!res.ok) throw new Error("Not logged in");
+      if (res.status === 401) {
+        setUser(null);
+        return;
+      }
 
       const data = await res.json();
-      setUser(data); // ✅ yahi important hai
+      setUser(data);
     } catch (err) {
       console.log(err);
       setUser(null);
@@ -70,6 +64,14 @@ export const ItemProvider = ({ children }) => {
       setLoadingUser(false);
     }
   };
+  // ✅ Fetch logged-in user
+  useEffect(() => {
+
+
+    fetchUser();
+  }, []);
+
+
   // ✅ Socket connection (ONLY data update, no alert logic here)
   useEffect(() => {
     const socket = io("https://backendsystem-a26n.onrender.com", {
