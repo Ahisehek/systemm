@@ -164,16 +164,14 @@ function Dash() {
             <div className="hidden sm:flex gap-5 items-center">
               <div className="text-sm sm:text-base">
                 {loadingUser ? (
-                  <p>Loading user...</p>
-                ) : user?.name ? (
-                  <p className="flex items-center gap-2">
-                    <span className="bg-white text-slate-800 px-2 py-1 rounded-full text-xs">
-                      {user?.role}
-                    </span>
-                    <span className="font-semibold">{user?.name}</span>
+                  <p>Loading...</p>
+                ) : user ? (
+                  <p className="flex gap-2">
+                    <span>{user.role}</span>
+                    <span>{user.name}</span> {/* ✅ name yaha show hoga */}
                   </p>
                 ) : (
-                  <p className="text-red-400">Not logged in</p>
+                  <p>Not logged in</p>
                 )}
               </div>
               <Button

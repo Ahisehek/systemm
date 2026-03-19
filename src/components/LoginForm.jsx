@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useItemContext } from "../context/ItemContext";
 
 const LoginForm = () => {
-  const { setUser } = useItemContext();
+  const { setUser, fetchUser } = useItemContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const LoginForm = () => {
         throw new Error(data.message || "Login failed");
       }
       console.log("success");
-
+      await fetchUser();
       navigate("/dashbord");
     } catch (err) {
       alert(err.message);

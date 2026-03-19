@@ -186,30 +186,31 @@ export const ItemProvider = ({ children }) => {
   };
 
   // ✅ Fetch logged-in user
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch(
-          "https://backendsystem-a26n.onrender.com/api/me",
-          { credentials: "include" }
-        );
+  // useEffect(() => {
 
-        if (!res.ok) throw new Error("Failed to fetch user");
 
-        const data = await res.json();
-        setUser(data);
-        console.log("Fetched User:", data);
-      } catch (err) {
-        console.error("User fetch error:", err.message);
-        setUser(null);
-      } finally {
-        setLoadingUser(false);
-      }
-    };
+  //   fetchUser();
+  // }, []);
 
-    fetchUser();
-  }, []);
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(
+        "https://backendsystem-a26n.onrender.com/api/me",
+        {
+          credentials: "include",
+        }
+      );
 
+      if (!res.ok) throw new Error("Not logged in");
+
+      const data = await res.json();
+      setUser(data); // ✅ yahi important hai
+    } catch (err) {
+      setUser(null);
+    } finally {
+      setLoadingUser(false);
+    }
+  };
   // ✅ Socket connection (ONLY data update, no alert logic here)
   useEffect(() => {
     const socket = io("https://backendsystem-a26n.onrender.com", {
@@ -291,6 +292,7 @@ export const ItemProvider = ({ children }) => {
         updateItemStatusInContext,
         user,
         loadingUser,
+        fetchUser
       }}
     >
       {children}
