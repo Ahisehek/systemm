@@ -198,6 +198,7 @@ export const ItemProvider = ({ children }) => {
 
         const data = await res.json();
         setUser(data);
+        console.log("Fetched User:", data);
       } catch (err) {
         console.error("User fetch error:", err.message);
         setUser(null);

@@ -23,36 +23,6 @@ function Dash() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, loadingUser } = useItemContext();
 
-  // const [bank, setBank] = useState("");
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const res = await fetch("https://backendsystem-a26n.onrender.com/api/user-profile", {
-  //         credentials: "include", // ⬅️ sends cookies
-  //       });
-
-  //       const data = await res.json();
-  //       // console.log("Fetched user data:", data); // ✅ Check this in dev tools
-
-  //       if (res.ok) {
-  //         setUser(data);
-  //         //console.log("User role:", data.role);
-  //       } else {
-  //         //console.error(data.message);
-  //         navigate("/");
-  //         setUser({ name: "", email: "" });
-  //       }
-  //     } catch (err) {
-  //       console.error("Error fetching user:", err);
-  //       setUser({ name: "", email: "" });
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchUser();
-  // }, []);
 
   const handleLogout = async () => {
     try {
@@ -62,8 +32,9 @@ function Dash() {
       });
 
       if (res.ok) {
-        setUser({ name: "", email: "" });
         navigate("/login");
+        window.location.reload(); // ✅ force reset context
+
       } else {
         const data = await res.json();
         alert(data.message || "Logout failed");
@@ -72,6 +43,7 @@ function Dash() {
       console.error("Logout error:", err);
     }
   };
+  console.log("Context User:", user);
 
   return (
     <div className="  ">
@@ -277,10 +249,10 @@ function Dash() {
 
               <div className="mt-4 border-t pt-2">
                 <p className="text-sm">
-                  {loading
+                  {loadingUser
                     ? "Loading user..."
-                    : user.name
-                      ? `${user.name} `
+                    : user?.name
+                      ? `${user.name}`
                       : "User not logged in"}
                 </p>
                 <Button
