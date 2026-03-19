@@ -25,13 +25,12 @@ function Home() {
   const handleTabChange = (value) => {
     setActiveTab(value);
     localStorage.setItem("activeHomeTab", value);
-    setTabAlert(value, false);
   };
 
   return (
     <div>
       <div className="">
-       
+
         <div className="w-screen  bg-slate-200 px-5 max-sm:w-100 max-sm:overflow-scroll  ">
           <div id="tab   ">
             <Tabs

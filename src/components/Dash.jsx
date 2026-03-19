@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import { Button } from "@/components/ui/button";
+import { useItemContext } from "@/context/ItemContext";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,11 +17,13 @@ import {
 
 function Dash() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({ name: "", email: "", role: "" });
-  const [loading, setLoading] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  //const [bank, setBank] = useState("");
+
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { user, loadingUser } = useItemContext();
+
+  // const [bank, setBank] = useState("");
 
   // useEffect(() => {
   //   const fetchUser = async () => {
@@ -187,15 +191,17 @@ function Dash() {
             {/* User Info + Logout */}
             <div className="hidden sm:flex gap-5 items-center">
               <div className="text-sm sm:text-base">
-                {loading ? (
-                  <p>Loading user data...</p>
-                ) : user.name ? (
-                  <p>
-                    <span className="font-semibold">{user.name}</span>{" "}
-
+                {loadingUser ? (
+                  <p>Loading user...</p>
+                ) : user?.name ? (
+                  <p className="flex items-center gap-2">
+                    <span className="bg-white text-slate-800 px-2 py-1 rounded-full text-xs">
+                      {user?.role}
+                    </span>
+                    <span className="font-semibold">{user?.name}</span>
                   </p>
                 ) : (
-                  <p className="text-red-500">User not logged in</p>
+                  <p className="text-red-400">Not logged in</p>
                 )}
               </div>
               <Button

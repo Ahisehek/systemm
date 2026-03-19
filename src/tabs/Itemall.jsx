@@ -10,20 +10,6 @@ function Itemall() {
   const [showOnlyPending, setShowOnlyPending] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const socket = io("http://localhost:5000", {
-  //     withCredentials: true,
-  //   });
-
-  //   socket.on("item_added", (newItem) => {
-  //     console.log("New item received via socket:", newItem);
-  //     setItems((prevItems) => [newItem, ...prevItems]);
-  //   });
-
-  //   return () => {
-  //     socket.disconnect();
-  //   };
-  // }, [setItems]);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -166,14 +152,14 @@ function Itemall() {
                         user?.role !== "admin"
                       }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${item.status === "approved"
-                          ? "bg-green-600 cursor-not-allowed"
-                          : user?.role !== "admin"
-                            ? "bg-gray-400 cursor-not-allowed"
-                            : item.status === "rejected"
-                              ? "bg-red-600"
-                              : item.status === "pending"
-                                ? "bg-yellow-500"
-                                : "bg-slate-800"
+                        ? "bg-green-600 cursor-not-allowed"
+                        : user?.role !== "admin"
+                          ? "bg-gray-400 cursor-not-allowed"
+                          : item.status === "rejected"
+                            ? "bg-red-600"
+                            : item.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-slate-800"
                         }`}
                     >
                       {item.status === "approved"
