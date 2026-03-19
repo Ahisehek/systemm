@@ -43,6 +43,7 @@ function Dash() {
       console.error("Logout error:", err);
     }
   };
+
   console.log("Context User:", user);
 
   return (
