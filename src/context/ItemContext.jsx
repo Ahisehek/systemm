@@ -107,7 +107,7 @@ export const ItemProvider = ({ children }) => {
       });
 
       // Update items list if tickets are part of items or a separate state
-      setVendors((prev) => [...prev, vendors]);
+      setVendors((prev) => [...prev, vender]);
       setTabAlert("vender", true);
     });
 

@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 
 function Itemall() {
   const [loading, setLoading] = useState(true);
-  const { items, setItems, user } = useItemContext();
+  const { items, setItems, user, loadingUser } = useItemContext();
   const [error, setError] = useState(null);
   const [showOnlyPending, setShowOnlyPending] = useState(false);
   const navigate = useNavigate();
@@ -48,14 +48,15 @@ function Itemall() {
   }, [setItems]);
 
   const tab = (item) => {
+    if (loadingUser) return; // ⛔ wait until user loads
+
     if (item.status === "approved") {
       alert("This item has already been approved.");
       return;
     }
 
-    if (user?.role !== "admin") {
+    if (!loadingUser && user?.role !== "admin") {
       navigate("/dashbord/notauthorized");
-      return;
     }
 
     navigate("/allitems", { state: { item } });
