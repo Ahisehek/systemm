@@ -65,7 +65,7 @@ function Allticket() {
         />
       </div>
 
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
         {ticket.attachment ? (
           <button
@@ -79,6 +79,43 @@ function Allticket() {
           >
             View Attachment
           </button>
+        ) : (
+          <p className="text-gray-600">No File</p>
+        )}
+      </div> */}
+
+      <div className="mt-6">
+        <p className="font-bold mb-2">Attachment:</p>
+
+        {ticket.attachment ? (
+          <>
+            {ticket.attachment.toLowerCase().endsWith(".pdf") ? (
+              <iframe
+                src={`https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`}
+                title="PDF Preview"
+                className="w-full h-[500px] border rounded"
+              />
+            ) : (
+              <img
+                src={`https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`}
+                alt="attachment"
+                className="w-full max-h-[400px] object-contain rounded border"
+              />
+            )}
+
+            {/* Open in new tab button */}
+            <button
+              onClick={() =>
+                window.open(
+                  `https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`,
+                  "_blank"
+                )
+              }
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Open Full
+            </button>
+          </>
         ) : (
           <p className="text-gray-600">No File</p>
         )}

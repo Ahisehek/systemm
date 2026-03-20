@@ -152,7 +152,7 @@ function Ticketall() {
                     )}
                   </td> */}
                   <td className="p-1 border whitespace-nowrap">
-                    <button
+                    {/* <button
                       onClick={() => tab(ticket)}
                       disabled={
                         ticket.status === "approved" ||
@@ -175,7 +175,7 @@ function Ticketall() {
                           : ticket.status === "pending"
                             ? "⏳ Pending"
                             : "Action"}
-                    </button>
+                    </button> */}
 
 
                     <button
