@@ -185,7 +185,7 @@ function Ticketall() {
                         loadingUser ||
                         user?.role !== "admin"
                       }
-                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${item.status === "approved"
+                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${ticket.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
                         : user?.role !== "admin"
                           ? "bg-gray-400 cursor-not-allowed"
