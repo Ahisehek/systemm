@@ -32,7 +32,7 @@ function Bank() {
       const res = await fetch(`${API_URL}/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: bankName }),
+        body: JSON.stringify({ name: bankName.toUpperCase() }),
         credentials: "include",
       });
 
@@ -82,8 +82,8 @@ function Bank() {
           <div className="flex flex-col gap-4">
             <input
               type="text"
-              value={bankName.toUpperCase()}
-              onChange={(e) => setBankName(e.target.value)}
+              value={bankName}
+              onChange={(e) => setBankName(e.target.value.toUpperCase())}
               placeholder="Enter bank name"
               className="border border-slate-300 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-slate-500"
             />
@@ -142,7 +142,7 @@ function Bank() {
                         onClick={() => setSelectedBank(bank)}
                       >
                         <td className="px-4 py-2 border-b border-slate-200">
-                          {bank.name}
+                          {bank.name.toUpperCase()}
                         </td>
                         <td className="text-center border-b border-slate-200">
                           <button
