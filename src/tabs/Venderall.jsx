@@ -162,7 +162,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 function Venderall() {
-  const { vendors, setVendors, user, } =
+  const { vendors, setVendors, user, loadingUser } =
     useItemContext();
   const [vendorStatuses, setVendorStatuses] = useState({});
   // const [vendors, setVendors] = useState([]);
@@ -298,7 +298,11 @@ function Venderall() {
                   <td className="p-1 border">
                     <button
                       onClick={() => tab(vendor)}
-                      disabled={vendor.status === "approved"}
+                      disabled={
+                        vendor.status === "approved" ||
+                        loadingUser ||
+                        user?.role !== "admin"
+                      }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vendor.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
                         : vendor.status === "rejected"

@@ -193,7 +193,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 function Vehicleall() {
-  const { vehicles, setVehicles, user, } =
+  const { vehicles, setVehicles, user, loadingUser } =
     useItemContext();
   const navigate = useNavigate();
   //const [vehicles, setVehicles] = useState([]);
@@ -352,7 +352,11 @@ function Vehicleall() {
                   <td className="p-1 border whitespace-nowrap">
                     <button
                       onClick={() => tab(vehicle)}
-                      disabled={vehicle.status === "approved"}
+                      disabled={
+                        vehicle.status === "approved" ||
+                        loadingUser ||
+                        user?.role !== "admin"
+                      }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white ${vehicle.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
                         : vehicle.status === "rejected"

@@ -6,7 +6,7 @@ import { useItemContext } from "@/context/ItemContext";
 import { io } from "socket.io-client";
 
 function Ticketall() {
-  const { tickets, setTickets, user, } =
+  const { tickets, setTickets, user, loadingUser } =
     useItemContext();
   const navigate = useNavigate();
   //const [tickets, setTickets] = useState([]);
@@ -154,7 +154,11 @@ function Ticketall() {
                   <td className="p-1 border whitespace-nowrap">
                     <button
                       onClick={() => tab(ticket)}
-                      disabled={ticket.status === "approved"}
+                      disabled={
+                        ticket.status === "approved" ||
+                        loadingUser ||
+                        user?.role !== "admin"
+                      }
                       className={`px-2 py-1 rounded-full text-white text-xs sm:text-sm ${ticket.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
                         : ticket.status === "rejected"
