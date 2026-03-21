@@ -49,6 +49,7 @@ function Allticket() {
   const handlePending = () => updateItemStatus("pending");
   const handleReject = () => updateItemStatus("rejected");
 
+
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md text-black">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Ticket Details</h2>
@@ -89,23 +90,31 @@ function Allticket() {
 
         {ticket.attachment ? (
           <>
-            {ticket.attachment.toLowerCase().endsWith(".pdf") ? (
-              <iframe
-                src={ticket.attachment}   // ✅ direct URL
-                title="PDF Preview"
-                className="w-full h-[500px] border rounded"
-              />
+            {ticket.attachment.includes(".pdf") ? (
+              <>
+                {/* PDF Preview (better than iframe) */}
+                <embed
+                  src={ticket.attachment}
+                  type="application/pdf"
+                  className="w-full h-[500px] border rounded"
+                />
+
+                {/* अगर preview fail हो तो fallback */}
+                <p className="text-sm text-gray-500 mt-2">
+                  If PDF is not visible, use the button below.
+                </p>
+              </>
             ) : (
               <img
-                src={ticket.attachment}   // ✅ direct URL
+                src={ticket.attachment}
                 alt="attachment"
                 className="w-full max-h-[400px] object-contain rounded border"
               />
             )}
 
-            {/* Open in new tab button */}
+            {/* हमेशा ये button रखो (best practice) */}
             <button
-              onClick={() => window.open(ticket.attachment, "_blank")} // ✅ direct URL
+              onClick={() => window.open(ticket.attachment, "_blank")}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
               Open Full
