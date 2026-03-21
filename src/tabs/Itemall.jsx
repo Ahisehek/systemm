@@ -36,14 +36,14 @@ function Itemall() {
   const tab = (item) => {
     if (loadingUser) return; // ⛔ wait until user loads
 
-    if (!loadingUser && user?.role !== "admin") {
-      navigate("/dashbord/notauthorized");
-      return; // ❗ ye missing tha
-    }
+    // if (!loadingUser && user?.role !== "admin") {
+    //   navigate("/dashbord/notauthorized");
+    //   return; // ❗ ye missing tha
+    // }
 
-    if (!loadingUser && user?.role !== "admin") {
-      navigate("/dashbord/notauthorized");
-    }
+    // if (!loadingUser && user?.role !== "admin") {
+    //   navigate("/dashbord/notauthorized");
+    // }
 
     navigate("/allitems", { state: { item } });
   };
