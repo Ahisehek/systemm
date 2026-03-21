@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useItemContext } from "../context/ItemContext";
 import CopyButton from "@/components/CopyButton";
+import { Document, Page } from 'react-pdf';
 
 function Allticket() {
   const { updateItemStatusInContext, user } = useItemContext();
@@ -85,52 +86,35 @@ function Allticket() {
         )}
       </div> */}
 
+
+
       <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
         {ticket.attachment ? (
-          <>
-            {ticket.attachment.toLowerCase().includes(".pdf") ? (
-              <>
-                {/* PDF Preview (Cloudinary fl_inline for inline view) */}
-                <embed
-                  src={ticket.attachment.replace(
-                    "/upload/",
-                    "/upload/fl_inline/"
-                  )}
-                  type="application/pdf"
-                  className="w-full h-[500px] border rounded"
-                />
-
-                {/* fallback message */}
-                <p className="text-sm text-gray-500 mt-2">
-                  If PDF is not visible, use the button below.
-                </p>
-              </>
-            ) : (
-              <img
-                src={ticket.attachment}
-                alt="attachment"
-                className="w-full max-h-[400px] object-contain rounded border"
-              />
-            )}
-
-            {/* Open in new tab button (inline preview) */}
-            <button
-              onClick={() =>
-                window.open(
-                  ticket.attachment.replace("/upload/", "/upload/fl_inline/"),
-                  "_blank"
-                )
-              }
-              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Open Preview
-            </button>
-          </>
+          ticket.attachment.toLowerCase().includes(".pdf") ? (
+            <div className="w-full border rounded">
+              <Document file={ticket.attachment}>
+                <Page pageNumber={1} width={600} />
+              </Document>
+            </div>
+          ) : (
+            <img
+              src={ticket.attachment}
+              alt="attachment"
+              className="w-full max-h-[400px] object-contain rounded border"
+            />
+          )
         ) : (
           <p className="text-gray-600">No File</p>
         )}
+
+        <button
+          onClick={() => window.open(ticket.attachment, "_blank")}
+          className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Open Full
+        </button>
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
