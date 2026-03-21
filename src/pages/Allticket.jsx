@@ -91,13 +91,13 @@ function Allticket() {
           <>
             {ticket.attachment.toLowerCase().endsWith(".pdf") ? (
               <iframe
-                src={`https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`}
+                src={ticket.attachment}   // ✅ direct URL
                 title="PDF Preview"
                 className="w-full h-[500px] border rounded"
               />
             ) : (
               <img
-                src={`https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`}
+                src={ticket.attachment}   // ✅ direct URL
                 alt="attachment"
                 className="w-full max-h-[400px] object-contain rounded border"
               />
@@ -105,12 +105,7 @@ function Allticket() {
 
             {/* Open in new tab button */}
             <button
-              onClick={() =>
-                window.open(
-                  `https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`,
-                  "_blank"
-                )
-              }
+              onClick={() => window.open(ticket.attachment, "_blank")} // ✅ direct URL
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
               Open Full

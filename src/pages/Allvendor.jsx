@@ -153,28 +153,52 @@ const DetailField = ({ label, value }) => (
 );
 
 // ✅ Reusable attachment field
-// const AttachmentField = ({ label, file }) => (
-//   <div className="bg-gray-50 p-3 rounded shadow-sm flex flex-col items-center">
-//     <span className="font-semibold mb-2">{label}</span>
-//     {file ? (
-//       <button
-//         onClick={() =>
-//           window.open(`https://backendsystem-a26n.onrender.com/uploads/vendorPics/${file}`, "_blank")
-//         }
-//         className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-//       >
-//         View
-//       </button>
-//     ) : (
-//       <span className="text-gray-500">No File</span>
-//     )}
-//   </div>
-// );
 
+
+
+// const AttachmentField = ({ label, file }) => {
+//   const fileUrl = `https://backendsystem-a26n.onrender.com/uploads/vendorPics/${file}`;
+//   const isPDF = file?.toLowerCase().endsWith(".pdf");
+
+//   return (
+//     <div className="bg-gray-50 p-3 rounded shadow-sm flex flex-col items-center">
+//       <span className="font-semibold mb-2">{label}</span>
+
+//       {file ? (
+//         <>
+//           {/* 👇 Preview */}
+//           {isPDF ? (
+//             <iframe
+//               src={fileUrl}
+//               title="PDF Preview"
+//               className="w-full h-[200px] border rounded mb-2"
+//             />
+//           ) : (
+//             <img
+//               src={fileUrl}
+//               alt="attachment"
+//               className="w-full h-[200px] object-contain rounded border mb-2"
+//             />
+//           )}
+
+//           {/* 👇 Open full file */}
+//           <button
+//             onClick={() => window.open(fileUrl, "_blank")}
+//             className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+//           >
+//             Open Full
+//           </button>
+//         </>
+//       ) : (
+//         <span className="text-gray-500">No File</span>
+//       )}
+//     </div>
+//   );
+// };
 
 
 const AttachmentField = ({ label, file }) => {
-  const fileUrl = `https://backendsystem-a26n.onrender.com/uploads/vendorPics/${file}`;
+  const fileUrl = file; // ✅ Cloudinary URL direct
   const isPDF = file?.toLowerCase().endsWith(".pdf");
 
   return (
@@ -183,7 +207,7 @@ const AttachmentField = ({ label, file }) => {
 
       {file ? (
         <>
-          {/* 👇 Preview */}
+          {/* Preview */}
           {isPDF ? (
             <iframe
               src={fileUrl}
@@ -198,7 +222,7 @@ const AttachmentField = ({ label, file }) => {
             />
           )}
 
-          {/* 👇 Open full file */}
+          {/* Open full */}
           <button
             onClick={() => window.open(fileUrl, "_blank")}
             className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
