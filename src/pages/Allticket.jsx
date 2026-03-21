@@ -4,10 +4,10 @@ import { useItemContext } from "../context/ItemContext";
 import CopyButton from "@/components/CopyButton";
 
 function Allticket() {
-  const { updateItemStatusInContext } = useItemContext();
+  const { updateItemStatusInContext, user } = useItemContext();
   const { state } = useLocation();
   const navigate = useNavigate();
-
+  const isUser = user?.role === "user";
   const ticket = state?.ticket;
 
   if (!ticket) {
@@ -130,19 +130,30 @@ function Allticket() {
         </button>
         <button
           onClick={handleApprove}
-          className="px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}
+  `}
         >
           Approve
         </button>
+
         <button
           onClick={handlePending}
-          className="px-5 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"}
+  `}
         >
           Pending
         </button>
+
         <button
           onClick={handleReject}
-          className="px-5 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"}
+  `}
         >
           Reject
         </button>

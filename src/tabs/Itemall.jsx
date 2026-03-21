@@ -119,30 +119,7 @@ function Itemall() {
                   </td>
                   <td className="p-1 border whitespace-nowrap">{item.unit}</td>
                   <td className="p-1 border">
-                    {/* <button
-                      onClick={() => tab(item)}
-                      disabled={
-                        item.status === "approved" ||
-                        loadingUser ||
-                        user?.role !== "admin"
-                      }
-                      className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${item.status === "approved"
-                        ? "bg-green-600 cursor-not-allowed"
-                        : item.status === "rejected"
-                          ? "bg-red-600"
-                          : item.status === "pending"
-                            ? "bg-yellow-500"
-                            : "bg-slate-800"
-                        }`}
-                    >
-                      {item.status === "approved"
-                        ? "✅ Approved"
-                        : item.status === "rejected"
-                          ? "❌ Rejected"
-                          : item.status === "pending"
-                            ? "⏳ Pending"
-                            : "Action"}
-                    </button> */}
+
 
                     <button
                       onClick={() => tab(item)}
@@ -153,13 +130,13 @@ function Itemall() {
                       // }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${item.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
-                        : user?.role !== "admin"
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : item.status === "rejected"
-                            ? "bg-red-600"
-                            : item.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        // : user?.role !== "admin"
+                        //   ? "bg-gray-400 cursor-not-allowed"
+                        : item.status === "rejected"
+                          ? "bg-red-600"
+                          : item.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {item.status === "approved"

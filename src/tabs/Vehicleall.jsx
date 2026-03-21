@@ -190,31 +190,31 @@ function Vehicleall() {
 
                     <button
                       onClick={() => tab(vehicle)}
-                      disabled={
-                        vehicle.status === "approved" ||
-                        loadingUser ||
-                        user?.role !== "admin"
-                      }
+                      // disabled={
+                      //   vehicle.status === "approved" ||
+                      //   loadingUser ||
+                      //   user?.role !== "admin"
+                      // }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${vehicle.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
-                        : user?.role !== "admin"
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : vehicle.status === "rejected"
-                            ? "bg-red-600"
-                            : vehicle.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        // : user?.role !== "admin"
+                        //   ? "bg-gray-400 cursor-not-allowed"
+                        : vehicle.status === "rejected"
+                          ? "bg-red-600"
+                          : vehicle.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {vehicle.status === "approved"
                         ? "✅ Approved"
-                        : user?.role !== "admin"
-                          ? "🔒 No Access"
-                          : vehicle.status === "rejected"
-                            ? "❌ Rejected"
-                            : vehicle.status === "pending"
-                              ? "⏳ Pending"
-                              : "Action"}
+                        // : user?.role !== "admin"
+                        //   ? "🔒 No Access"
+                        : vehicle.status === "rejected"
+                          ? "❌ Rejected"
+                          : vehicle.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

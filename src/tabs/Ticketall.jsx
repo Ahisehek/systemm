@@ -54,15 +54,15 @@ function Ticketall() {
   }, []);
 
   const tab = (ticket) => {
-    if (ticket.status === "approved") {
-      alert("This ticket has already been approved.");
-      return;
-    }
+    // if (ticket.status === "approved") {
+    //   alert("This ticket has already been approved.");
+    //   return;
+    // }
 
-    if (user?.role !== "admin") {
-      navigate("/dashbord/notauthorized");
-      return;
-    }
+    // if (user?.role !== "admin") {
+    //   navigate("/dashbord/notauthorized");
+    //   return;
+    // }
 
     navigate("/allticket", { state: { ticket } });
   };
@@ -180,31 +180,31 @@ function Ticketall() {
 
                     <button
                       onClick={() => tab(ticket)}
-                      disabled={
-                        ticket.status === "approved" ||
-                        loadingUser ||
-                        user?.role !== "admin"
-                      }
+                      // disabled={
+                      //   ticket.status === "approved" ||
+                      //   loadingUser ||
+                      //   user?.role !== "admin"
+                      // }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${ticket.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
-                        : user?.role !== "admin"
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : ticket.status === "rejected"
-                            ? "bg-red-600"
-                            : ticket.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        // : user?.role !== "admin"
+                        //   ? "bg-gray-400 cursor-not-allowed"
+                        : ticket.status === "rejected"
+                          ? "bg-red-600"
+                          : ticket.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {ticket.status === "approved"
                         ? "✅ Approved"
-                        : user?.role !== "admin"
-                          ? "🔒 No Access"
-                          : ticket.status === "rejected"
-                            ? "❌ Rejected"
-                            : ticket.status === "pending"
-                              ? "⏳ Pending"
-                              : "Action"}
+                        // : user?.role !== "admin"
+                        //   ? "🔒 No Access"
+                        : ticket.status === "rejected"
+                          ? "❌ Rejected"
+                          : ticket.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>

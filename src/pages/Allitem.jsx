@@ -14,26 +14,26 @@ function AllItems() {
 
   // const item = items.find((i) => i._id === state?.id);
 
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Item Details", 20, 20);
+  // const generatePDF = () => {
+  //   const doc = new jsPDF();
+  //   doc.setFontSize(16);
+  //   doc.text("Item Details", 20, 20);
 
-    doc.setFontSize(12);
-    let y = 30;
+  //   doc.setFontSize(12);
+  //   let y = 30;
 
-    const entries = Object.entries(item);
-    entries.forEach(([key, value]) => {
-      const formattedKey = key
-        .replace(/([A-Z])/g, " $1")
-        .replace(/^./, (str) => str.toUpperCase());
+  //   const entries = Object.entries(item);
+  //   entries.forEach(([key, value]) => {
+  //     const formattedKey = key
+  //       .replace(/([A-Z])/g, " $1")
+  //       .replace(/^./, (str) => str.toUpperCase());
 
-      doc.text(`${formattedKey}: ${value}`, 20, y);
-      y += 10;
-    });
+  //     doc.text(`${formattedKey}: ${value}`, 20, y);
+  //     y += 10;
+  //   });
 
-    doc.save(`Item_${item.itemName || "Details"}.pdf`);
-  };
+  //   doc.save(`Item_${item.itemName || "Details"}.pdf`);
+  // };
 
   const updateItemStatus = async (status) => {
     try {
@@ -131,7 +131,7 @@ function AllItems() {
           Reject
         </button>
 
-        <button
+        {/* <button
           onClick={generatePDF}
           disabled={isUser}
           className={`px-5 py-2 rounded text-white transition 
@@ -139,7 +139,7 @@ function AllItems() {
   `}
         >
           Download PDF
-        </button>
+        </button> */}
 
         {/* <button
           onClick={handleApprove}

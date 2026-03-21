@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 function Venderall() {
-  const { vendors, setVendors, user, loadingUser } =
+  const { vendors, setVendors, user } =
     useItemContext();
   const [vendorStatuses, setVendorStatuses] = useState({});
   // const [vendors, setVendors] = useState([]);
@@ -168,31 +168,31 @@ function Venderall() {
 
                     <button
                       onClick={() => tab(vendor)}
-                      disabled={
-                        vendor.status === "approved" ||
-                        loadingUser ||
-                        user?.role !== "admin"
-                      }
+                      // disabled={
+                      //   vendor.status === "approved" ||
+                      //   loadingUser ||
+                      //   user?.role !== "admin"
+                      // }
                       className={`px-2 py-1 text-xs sm:text-sm rounded-full text-white transition-colors ${vendor.status === "approved"
                         ? "bg-green-600 cursor-not-allowed"
-                        : user?.role !== "admin"
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : vendor.status === "rejected"
-                            ? "bg-red-600"
-                            : vendor.status === "pending"
-                              ? "bg-yellow-500"
-                              : "bg-slate-800"
+                        // : user?.role !== "admin"
+                        //   ? "bg-gray-400 cursor-not-allowed"
+                        : vendor.status === "rejected"
+                          ? "bg-red-600"
+                          : vendor.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-slate-800"
                         }`}
                     >
                       {vendor.status === "approved"
                         ? "✅ Approved"
-                        : user?.role !== "admin"
-                          ? "🔒 No Access"
-                          : vendor.status === "rejected"
-                            ? "❌ Rejected"
-                            : vendor.status === "pending"
-                              ? "⏳ Pending"
-                              : "Action"}
+                        // : user?.role !== "admin"
+                        //   ? "🔒 No Access"
+                        : vendor.status === "rejected"
+                          ? "❌ Rejected"
+                          : vendor.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>
