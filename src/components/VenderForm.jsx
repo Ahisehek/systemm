@@ -448,11 +448,6 @@
 
 
 
-
-
-
-
-
 import React, { useState, useEffect, useRef } from "react";
 
 export default function VendorForm() {
@@ -488,13 +483,11 @@ export default function VendorForm() {
   useEffect(() => {
     fetch("https://backendsystem-a26n.onrender.com/site/allsite")
       .then((res) => res.json())
-      .then(setSites)
-      .catch(console.error);
+      .then(setSites);
 
     fetch("https://backendsystem-a26n.onrender.com/api/list")
       .then((res) => res.json())
-      .then(setBankList)
-      .catch(console.error);
+      .then(setBankList);
   }, []);
 
   const handleChange = (e) => {
@@ -530,126 +523,112 @@ export default function VendorForm() {
       }
     });
 
-    try {
-      await fetch("https://backendsystem-a26n.onrender.com/vender/add", {
-        method: "POST",
-        body: form,
-      });
+    await fetch("https://backendsystem-a26n.onrender.com/vender/add", {
+      method: "POST",
+      body: form,
+    });
 
-      alert("Vendor Added Successfully ✅");
-      formRef.current.reset();
-    } catch (err) {
-      console.error(err);
-      alert("Error submitting form");
-    }
+    alert("Vendor Added ✅");
+    formRef.current.reset();
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-6">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
-          Vendor Registration
-        </h1>
+    <div className="min-h-screen bg-gray-100 flex">
+      {/* Sidebar */}
+      <div className="w-64 bg-gray-900 text-white p-6 hidden md:block">
+        <h2 className="text-xl font-bold mb-6">ERP Panel</h2>
+        <ul className="space-y-4 text-gray-300">
+          <li className="hover:text-white cursor-pointer">Dashboard</li>
+          <li className="hover:text-white cursor-pointer">Vendors</li>
+          <li className="hover:text-white cursor-pointer">Reports</li>
+          <li className="hover:text-white cursor-pointer">Settings</li>
+        </ul>
+      </div>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+      {/* Main Content */}
+      <div className="flex-1 p-6">
+        <div className="bg-white shadow-lg rounded-xl p-6">
+          <h1 className="text-2xl font-bold mb-6 text-gray-800">
+            Vendor Registration
+          </h1>
 
-          {/* Section 1 */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Basic Details
-            </h2>
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <select name="siteName" onChange={handleChange} required className="input">
-                <option value="">Select Site</option>
+            {/* Row Layout */}
+            <div className="grid grid-cols-4 gap-4">
+              <select name="siteName" onChange={handleChange} required className="input col-span-1">
+                <option value="">Site</option>
                 {sites.map((s, i) => (
                   <option key={i}>{s.fullName}</option>
                 ))}
               </select>
 
-              <input name="accountName" placeholder="Account Name" required className="input" onChange={handleChange} />
+              <input name="accountName" placeholder="Account Name" className="input col-span-2" onChange={handleChange} required />
 
-              <input name="city" placeholder="City" required className="input" onChange={handleChange} />
+              <input name="city" placeholder="City" className="input col-span-1" onChange={handleChange} required />
 
-              <input name="contactPersonName" placeholder="Contact Person" required className="input" onChange={handleChange} />
+              <input name="contactPersonName" placeholder="Contact Person" className="input col-span-1" onChange={handleChange} required />
 
-              <input name="contactPersonNo" placeholder="Mobile" required className="input" onChange={handleChange} />
+              <input name="contactPersonNo" placeholder="Mobile" className="input col-span-1" onChange={handleChange} required />
 
-              <input name="emailId" placeholder="Email" required className="input" onChange={handleChange} />
+              <input name="emailId" placeholder="Email" className="input col-span-2" onChange={handleChange} required />
             </div>
-          </div>
 
-          {/* Section 2 */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Bank Details
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Bank Row */}
+            <div className="grid grid-cols-4 gap-4">
               <select name="bankName" onChange={handleChange} required className="input">
-                <option value="">Select Bank</option>
+                <option value="">Bank</option>
                 {bankList.map((b, i) => (
                   <option key={i}>{b.name}</option>
                 ))}
               </select>
 
-              <input name="bankAccountNo" placeholder="Account No" required className="input" onChange={handleChange} />
+              <input name="bankAccountNo" placeholder="Account No" className="input" onChange={handleChange} required />
 
-              <input name="ifscCode" placeholder="IFSC" required className="input" onChange={handleChange} />
-            </div>
-          </div>
-
-          {/* Section 3 */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Tax Details
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <input name="gstNo" placeholder="GST No" required className="input" onChange={handleChange} />
-              <input name="panNo" placeholder="PAN No" required className="input" onChange={handleChange} />
+              <input name="ifscCode" placeholder="IFSC" className="input" onChange={handleChange} required />
 
               <select name="tds" required className="input" onChange={handleChange}>
-                <option value="">Select TDS</option>
+                <option value="">TDS</option>
                 <option value="194C">194C</option>
                 <option value="194J">194J</option>
-                <option value="NA">Not Applicable</option>
+                <option value="NA">NA</option>
               </select>
             </div>
-          </div>
 
-          {/* Section 4 */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Documents Upload
-            </h2>
+            {/* Tax Row */}
+            <div className="grid grid-cols-4 gap-4">
+              <input name="gstNo" placeholder="GST No" className="input" onChange={handleChange} required />
+              <input name="panNo" placeholder="PAN" className="input" onChange={handleChange} required />
+              <input name="fullAddress" placeholder="Full Address" className="input col-span-2" onChange={handleChange} required />
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Upload Row */}
+            <div className="grid grid-cols-4 gap-4">
               {Object.keys(formData.attachments).map((field) => (
-                <div key={field} className="border p-3 rounded-lg flex justify-between items-center">
-                  <span className="capitalize">{field}</span>
+                <div key={field} className="border rounded-lg p-2 flex flex-col">
+                  <span className="text-sm text-gray-600 capitalize mb-1">{field}</span>
                   <input type="file" name={field} onChange={handleChange} />
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Submit */}
-          <div className="text-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-lg shadow">
-              Submit
-            </button>
-          </div>
-        </form>
+            {/* Submit */}
+            <div className="flex justify-end">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow">
+                Save Vendor
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <style jsx>{`
         .input {
           width: 100%;
           border: 1px solid #d1d5db;
-          padding: 10px;
-          border-radius: 8px;
-          outline: none;
+          padding: 8px;
+          border-radius: 6px;
+          font-size: 14px;
         }
         .input:focus {
           border-color: #2563eb;
