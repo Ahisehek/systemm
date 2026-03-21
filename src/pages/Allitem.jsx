@@ -6,9 +6,10 @@ import { useState } from "react";
 import CopyButton from "@/components/CopyButton";
 
 function AllItems() {
-  const { updateItemStatusInContext, items, removeItem } = useItemContext();
+  const { updateItemStatusInContext, items, removeItem, user } = useItemContext();
   const { state } = useLocation();
   const navigate = useNavigate();
+  const isUser = user?.role === "user";
   const item = state?.item;
 
   // const item = items.find((i) => i._id === state?.id);
@@ -93,6 +94,7 @@ function AllItems() {
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-6">
+
         <button
           onClick={() => navigate(-1)}
           className="px-5 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
@@ -100,6 +102,46 @@ function AllItems() {
           Back
         </button>
         <button
+          onClick={handleApprove}
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}
+  `}
+        >
+          Approve
+        </button>
+
+        <button
+          onClick={handlePending}
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"}
+  `}
+        >
+          Pending
+        </button>
+
+        <button
+          onClick={handleReject}
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"}
+  `}
+        >
+          Reject
+        </button>
+
+        <button
+          onClick={generatePDF}
+          disabled={isUser}
+          className={`px-5 py-2 rounded text-white transition 
+    ${isUser ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
+  `}
+        >
+          Download PDF
+        </button>
+
+        {/* <button
           onClick={handleApprove}
           className="px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
         >
@@ -122,7 +164,7 @@ function AllItems() {
           className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
           Download PDF
-        </button>
+        </button> */}
       </div>
     </div>
   );

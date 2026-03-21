@@ -36,10 +36,10 @@ function Itemall() {
   const tab = (item) => {
     if (loadingUser) return; // ⛔ wait until user loads
 
-    if (!loadingUser && user?.role !== "admin") {
-      navigate("/dashbord/notauthorized");
-      return; // ❗ ye missing tha
-    }
+    // if (!loadingUser && user?.role !== "admin") {
+    //   navigate("/dashbord/notauthorized");
+    //   return; // ❗ ye missing tha
+    // }
 
     // if (!loadingUser && user?.role !== "admin") {
     //   navigate("/dashbord/notauthorized");
@@ -164,13 +164,13 @@ function Itemall() {
                     >
                       {item.status === "approved"
                         ? "✅ Approved"
-                        : user?.role !== "admin"
-                          ? "🔒 No Access"
-                          : item.status === "rejected"
-                            ? "❌ Rejected"
-                            : item.status === "pending"
-                              ? "⏳ Pending"
-                              : "Action"}
+                        // : user?.role !== "admin"
+                        //   ? "🔒 No Access"
+                        : item.status === "rejected"
+                          ? "❌ Rejected"
+                          : item.status === "pending"
+                            ? "⏳ Pending"
+                            : "Action"}
                     </button>
                   </td>
                 </tr>
