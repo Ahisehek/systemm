@@ -92,29 +92,40 @@ function Allticket() {
         <p className="font-bold mb-2">Attachment:</p>
 
         {ticket.attachment ? (
-          ticket.attachment.toLowerCase().includes(".pdf") ? (
-            <div className="w-full border rounded">
-              <Document file={ticket.attachment}>
-                <Page pageNumber={1} width={600} />
-              </Document>
-            </div>
-          ) : (
-            <img
-              src={ticket.attachment}
-              alt="attachment"
-              className="w-full max-h-[400px] object-contain rounded border"
-            />
-          )
+          <>
+            {ticket.attachment.includes(".pdf") ? (
+              <>
+                {/* PDF Preview (better than iframe) */}
+                <embed
+                  src={ticket.attachment}
+                  type="application/pdf"
+                  className="w-full h-[500px] border rounded"
+                />
+
+                {/* अगर preview fail हो तो fallback */}
+                <p className="text-sm text-gray-500 mt-2">
+                  If PDF is not visible, use the button below.
+                </p>
+              </>
+            ) : (
+              <img
+                src={ticket.attachment}
+                alt="attachment"
+                className="w-full max-h-[400px] object-contain rounded border"
+              />
+            )}
+
+            {/* हमेशा ये button रखो (best practice) */}
+            <button
+              onClick={() => window.open(ticket.attachment, "_blank")}
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Open Full
+            </button>
+          </>
         ) : (
           <p className="text-gray-600">No File</p>
         )}
-
-        <button
-          onClick={() => window.open(ticket.attachment, "_blank")}
-          className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Open Full
-        </button>
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
