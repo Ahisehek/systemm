@@ -39,9 +39,9 @@ const LoginForm = () => {
     }
   };
 
-  const handleClick = () => {
-    navigate("/register");
-  };
+  // const handleClick = () => {
+  //   navigate("/register");
+  // };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
@@ -80,13 +80,13 @@ const LoginForm = () => {
           >
             Login
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={handleClick}
             className="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 transition"
           >
             Register
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

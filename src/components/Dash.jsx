@@ -168,8 +168,8 @@ function Dash() {
                   <p>Loading...</p>
                 ) : user ? (
                   <p className="flex gap-2">
-                    <span>{user.role}</span>
-                    <span>{user.name}</span> {/* ✅ name yaha show hoga */}
+                    {/* <span>{user.role}</span> */}
+                    <span>{user.name.toUpperCase()}</span> {/* ✅ name yaha show hoga */}
                   </p>
                 ) : (
                   <p>Not logged in</p>
