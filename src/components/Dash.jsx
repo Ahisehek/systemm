@@ -51,7 +51,7 @@ function Dash() {
       <div className="bg-slate-200 text-white roboto-normal overflow-auto hide-scrollbar min-h-screen ">
         <div
           id="nav"
-          className="bg-slate-700 text-white font-bold fixed top-0 w-full z-50 shadow-md shadow-gray-600 border-b border-blue-950"
+          className="bg-gradient-to-r from-slate-900 via-white to-slate-900  text-white font-bold fixed top-0 w-full z-50 shadow-md shadow-gray-600 border-b border-blue-950"
         >
           <div className="  flex items-center justify-between px-4 sm:px-6 lg:px-10 h-14">
             {/* Logo or Brand */}
@@ -95,7 +95,7 @@ function Dash() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden sm:flex gap-5 items-center">
+            <div className="hidden sm:flex gap-5 items-center text-slate-900">
               <Link to="" className="hover:bg-slate-800 px-3 py-1 rounded">
                 Home
               </Link>

@@ -128,14 +128,14 @@ function Allticket() {
             {ticket.attachment.toLowerCase().includes(".pdf") ? (
               <iframe
                 src={`${ticket.attachment}#toolbar=0`}
-                className="w-full h-[600px] border rounded"
+                className="w-full h-[200px] border rounded"
                 title="PDF Preview"
               />
             ) : (
               <img
                 src={ticket.attachment}
                 alt="attachment"
-                className="w-full max-h-[400px] object-contain rounded border"
+                className="w-full max-h-[200px] object-contain rounded border"
               />
             )}
 
