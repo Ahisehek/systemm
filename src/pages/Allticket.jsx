@@ -156,12 +156,21 @@ function Allticket() {
             )}
 
             {/* ✅ Download Button (IMPORTANT FIX) */}
-            <a
+            {/* <a
               href={ticket.attachment.replace(
                 "/upload/",
                 "/upload/fl_attachment/"
               )}
               className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Download
+            </a> */}
+
+            <a
+              href={ticket.attachment.replace(
+                "/upload/",
+                "/upload/fl_attachment/"
+              )}
             >
               Download
             </a>
