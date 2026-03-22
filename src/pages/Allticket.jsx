@@ -122,12 +122,12 @@ function Allticket() {
       <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
-        {ticket.attachment ? (
+        {ticket?.attachment ? (
           <>
-            {/* ✅ Better PDF detection */}
-            {ticket.attachment.endsWith(".pdf") ? (
+            {/* ✅ Better detection (Cloudinary safe) */}
+            {ticket.attachment.toLowerCase().includes(".pdf") ? (
               <iframe
-                src={ticket.attachment}
+                src={`${ticket.attachment}#toolbar=0`}
                 className="w-full h-[600px] border rounded"
                 title="PDF Preview"
               />
@@ -139,14 +139,27 @@ function Allticket() {
               />
             )}
 
-            {/* ✅ Download Button */}
+            {/* ✅ Fixed Download */}
             <button
               onClick={() => {
-                const link = document.createElement("a");
-                link.href = ticket.attachment;
-                link.download = "attachment";
-                link.target = "_blank";
-                link.click();
+                fetch(ticket.attachment)
+                  .then((res) => res.blob())
+                  .then((blob) => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+
+                    // ✅ proper file name
+                    const fileName = ticket.attachment.split("/").pop();
+                    link.download = fileName || "file";
+
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                  })
+                  .catch(() => {
+                    alert("Download failed");
+                  });
               }}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
@@ -157,7 +170,6 @@ function Allticket() {
           <p className="text-gray-600">No File</p>
         )}
       </div>
-
 
 
 
