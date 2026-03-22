@@ -168,7 +168,7 @@ function Allticket() {
               <>
                 {/* ✅ PDF Preview */}
                 <iframe
-                  src={ticket.attachment}
+                  src={`https://docs.google.com/gview?url=${ticket.attachment}&embedded=true`}
                   className="w-full h-[500px] border rounded"
                   title="PDF Preview"
                 />
