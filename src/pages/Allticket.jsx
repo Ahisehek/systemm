@@ -165,15 +165,11 @@ function Allticket() {
         {ticket.attachment ? (
           <>
             {ticket.attachment.includes(".pdf") ? (
-              <>
-                {/* ✅ PDF Preview */}
-                <iframe
-                  src={`https://docs.google.com/gview?url=${ticket.attachment}&embedded=true`}
-                  className="w-full h-[500px] border rounded"
-                  title="PDF Preview"
-                />
-
-              </>
+              <iframe
+                src={ticket.attachment}
+                className="w-full h-[600px] border rounded"
+                title="PDF Preview"
+              />
             ) : (
               <img
                 src={ticket.attachment}
