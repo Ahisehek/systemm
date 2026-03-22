@@ -118,14 +118,14 @@ function Allticket() {
 
 
 
-      {/* <div className="mt-6">
+      <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
         {ticket.attachment ? (
           <>
             {ticket.attachment.includes(".pdf") ? (
               <>
-              
+
                 <embed
                   src={ticket.attachment}
                   type="application/pdf"
@@ -156,9 +156,9 @@ function Allticket() {
         ) : (
           <p className="text-gray-600">No File</p>
         )}
-      </div> */}
+      </div>
 
-
+      {/* 
       <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
@@ -190,7 +190,7 @@ function Allticket() {
         ) : (
           <p className="text-gray-600">No File</p>
         )}
-      </div>
+      </div> */}
 
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
