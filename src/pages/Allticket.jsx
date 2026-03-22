@@ -50,6 +50,19 @@ function Allticket() {
   const handlePending = () => updateItemStatus("pending");
   const handleReject = () => updateItemStatus("rejected");
 
+  const handleDownload = async () => {
+    const response = await fetch(ticket.attachment);
+    const blob = await response.blob();
+
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "file.pdf"; // yahan naam set kar sakte ho
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
 
 
 
@@ -154,17 +167,12 @@ function Allticket() {
               />
             )}
 
-            <a
-              href={ticket.attachment.replace(
-                "/upload/",
-                "/upload/fl_attachment/"
-              )}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={handleDownload}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
-            </a>
+            </button>
 
 
           </>
