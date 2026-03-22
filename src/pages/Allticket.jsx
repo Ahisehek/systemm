@@ -51,16 +51,31 @@ function Allticket() {
   const handleReject = () => updateItemStatus("rejected");
 
   const handleDownload = async () => {
-    const response = await fetch(ticket.attachment);
-    const blob = await response.blob();
+    try {
+      const response = await fetch(ticket.attachment);
 
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "file.pdf"; // yahan naam set kar sakte ho
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+      if (!response.ok) throw new Error("Download failed");
+
+      const blob = await response.blob();
+
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+
+      // 🔥 Dynamic filename (IMPORTANT)
+      const fileName = ticket.attachment.split("/").pop().split("?")[0];
+      a.download = fileName || "download.pdf";
+
+      document.body.appendChild(a);
+      a.click();
+
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert("Download failed");
+    }
   };
 
 
