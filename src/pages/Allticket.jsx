@@ -169,10 +169,9 @@ function Allticket() {
             </a> */}
 
             <a
-              href={ticket.attachment.replace(
-                "/upload/",
-                "/upload/fl_attachment:download.pdf/"
-              )}
+              href={ticket.attachment}
+              download
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
             </a>
