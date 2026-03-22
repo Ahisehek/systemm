@@ -78,7 +78,12 @@ function Allticket() {
     }
   };
 
-
+  const getFileUrl = (url) => {
+    if (url.endsWith(".pdf")) {
+      return url.replace("/image/upload/", "/raw/upload/");
+    }
+    return url;
+  };
 
 
   return (
@@ -137,14 +142,22 @@ function Allticket() {
                 className="w-full max-h-[400px] object-contain rounded border"
               />
             )}
-
+            {/* 
             <button
               onClick={handleDownload}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
+            </button> */}
+            <button
+              onClick={() => {
+                const url = getFileUrl(ticket.attachment);
+                window.open(url, "_blank");
+              }}
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
+            >
+              Download
             </button>
-
 
           </>
         ) : (
