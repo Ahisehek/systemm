@@ -118,39 +118,39 @@ function Allticket() {
 
 
 
+
       <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
         {ticket.attachment ? (
           <>
-            {ticket.attachment.includes(".pdf") ? (
-              <>
-
-                <embed
-                  src={ticket.attachment}
-                  type="application/pdf"
-                  className="w-full h-[500px] border rounded"
-                />
-
-
-                <p className="text-sm text-gray-500 mt-2">
-                  If PDF is not visible, use the button below.
-                </p>
-              </>
-            ) : (
+            {/* ✅ Image Preview */}
+            {/\.(jpg|jpeg|png|webp)$/i.test(ticket.attachment) ? (
               <img
                 src={ticket.attachment}
                 alt="attachment"
                 className="w-full max-h-[400px] object-contain rounded border"
               />
+            ) : (
+              <>
+                {/* ✅ PDF / Other file → link show */}
+                <a
+                  href={ticket.attachment}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline"
+                >
+                  Open File
+                </a>
+              </>
             )}
 
-
+            {/* ✅ Download button (sab ke liye kaam karega) */}
             <button
               onClick={() => window.open(ticket.attachment, "_blank")}
-              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
-              Open Full
+              Download
             </button>
           </>
         ) : (
@@ -158,39 +158,8 @@ function Allticket() {
         )}
       </div>
 
-      {/* 
-      <div className="mt-6">
-        <p className="font-bold mb-2">Attachment:</p>
-
-        {ticket.attachment ? (
-          <>
-            {ticket.attachment.includes(".pdf") ? (
-              <iframe
-                src={ticket.attachment}
-                className="w-full h-[600px] border rounded"
-                title="PDF Preview"
-              />
-            ) : (
-              <img
-                src={ticket.attachment}
-                alt="attachment"
-                className="w-full max-h-[400px] object-contain rounded border"
-              />
-            )}
-
-            <button
-              onClick={handleDownload}
-              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
-            >
-              Download
-            </button>
 
 
-          </>
-        ) : (
-          <p className="text-gray-600">No File</p>
-        )}
-      </div> */}
 
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
@@ -230,6 +199,8 @@ function Allticket() {
           Reject
         </button>
       </div>
+
+
     </div>
   );
 }
