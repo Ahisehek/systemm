@@ -124,7 +124,8 @@ function Allticket() {
 
         {ticket.attachment ? (
           <>
-            {ticket.attachment.includes(".pdf") ? (
+            {/* ✅ Better PDF detection */}
+            {ticket.attachment.endsWith(".pdf") ? (
               <iframe
                 src={ticket.attachment}
                 className="w-full h-[600px] border rounded"
@@ -138,14 +139,19 @@ function Allticket() {
               />
             )}
 
+            {/* ✅ Download Button */}
             <button
-              onClick={handleDownload}
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = ticket.attachment;
+                link.download = "attachment";
+                link.target = "_blank";
+                link.click();
+              }}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
             </button>
-
-
           </>
         ) : (
           <p className="text-gray-600">No File</p>
