@@ -145,9 +145,6 @@ function Allticket() {
                   title="PDF Preview"
                 />
 
-                <p className="text-sm text-gray-500 mt-2">
-                  If PDF is not visible, use the button below.
-                </p>
               </>
             ) : (
               <img
