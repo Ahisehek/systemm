@@ -124,34 +124,28 @@ function Allticket() {
 
         {ticket.attachment ? (
           <>
-            {/* ✅ Image Preview */}
-            {/\.(jpg|jpeg|png|webp)$/i.test(ticket.attachment) ? (
+            {ticket.attachment.includes(".pdf") ? (
+              <iframe
+                src={ticket.attachment}
+                className="w-full h-[600px] border rounded"
+                title="PDF Preview"
+              />
+            ) : (
               <img
                 src={ticket.attachment}
                 alt="attachment"
                 className="w-full max-h-[400px] object-contain rounded border"
               />
-            ) : (
-              <>
-                {/* ✅ PDF / Other file → link show */}
-                <a
-                  href={ticket.attachment}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline"
-                >
-                  Open File
-                </a>
-              </>
             )}
 
-            {/* ✅ Download button (sab ke liye kaam karega) */}
             <button
-              onClick={() => window.open(ticket.attachment, "_blank")}
+              onClick={handleDownload}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
             </button>
+
+
           </>
         ) : (
           <p className="text-gray-600">No File</p>
