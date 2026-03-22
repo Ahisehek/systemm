@@ -50,6 +50,19 @@ function Allticket() {
   const handlePending = () => updateItemStatus("pending");
   const handleReject = () => updateItemStatus("rejected");
 
+  const getDownloadUrl = (url) => {
+    if (!url) return "";
+
+    let newUrl = url.replace("/upload/", "/upload/fl_attachment/");
+
+    // 👉 PDF fix
+    if (url.endsWith(".pdf")) {
+      newUrl = newUrl.replace("/image/upload/", "/raw/upload/");
+    }
+
+    return newUrl;
+  };
+
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md text-black">
@@ -167,10 +180,8 @@ function Allticket() {
             </a> */}
 
             <a
-              href={ticket.attachment.replace(
-                "/upload/",
-                "/upload/fl_attachment/"
-              )}
+              href={getDownloadUrl(ticket.attachment)}
+              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
             </a>
