@@ -202,13 +202,16 @@ const AttachmentField = ({ label, file }) => {
 
       {file ? (
         <>
-          {/* Preview */}
+          {/* ✅ PDF: link only, Image: preview */}
           {isPDF ? (
-            <iframe
-              src={fileUrl}
-              title="PDF Preview"
-              className="w-full h-[200px] border rounded mb-2"
-            />
+            <a
+              href={fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline mb-2"
+            >
+              📄 View PDF
+            </a>
           ) : (
             <img
               src={fileUrl}
@@ -217,7 +220,7 @@ const AttachmentField = ({ label, file }) => {
             />
           )}
 
-          {/* Open Full */}
+          {/* ✅ Open Full button for both */}
           <button
             onClick={() => window.open(fileUrl, "_blank")}
             className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"

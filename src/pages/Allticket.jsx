@@ -124,22 +124,29 @@ function Allticket() {
 
         {ticket?.attachment ? (
           <>
-            {/* ✅ Better detection (Cloudinary safe) */}
+            {/* ✅ PDF detection */}
             {ticket.attachment.toLowerCase().includes(".pdf") ? (
-              <iframe
-                src={`${ticket.attachment}#toolbar=0`}
-                className="w-full h-[200px] border rounded"
-                title="PDF Preview"
-              />
+              <>
+                {/* ✅ PDF: show link instead of iframe */}
+                <a
+                  href={ticket.attachment}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline mb-2 block"
+                >
+                  📄 View PDF
+                </a>
+              </>
             ) : (
+              /* ✅ Image preview */
               <img
                 src={ticket.attachment}
                 alt="attachment"
-                className="w-full max-h-[200px] object-contain rounded border"
+                className="w-full max-h-[200px] object-contain rounded border mb-2"
               />
             )}
 
-            {/* ✅ Fixed Download */}
+            {/* ✅ Download Button (both PDF & Images) */}
             <button
               onClick={() => {
                 fetch(ticket.attachment)
