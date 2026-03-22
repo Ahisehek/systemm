@@ -88,21 +88,21 @@ function Allticket() {
 
 
 
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <p className="font-bold mb-2">Attachment:</p>
 
         {ticket.attachment ? (
           <>
             {ticket.attachment.includes(".pdf") ? (
               <>
-                {/* PDF Preview (better than iframe) */}
+              
                 <embed
                   src={ticket.attachment}
                   type="application/pdf"
                   className="w-full h-[500px] border rounded"
                 />
 
-                {/* अगर preview fail हो तो fallback */}
+
                 <p className="text-sm text-gray-500 mt-2">
                   If PDF is not visible, use the button below.
                 </p>
@@ -115,7 +115,7 @@ function Allticket() {
               />
             )}
 
-            {/* हमेशा ये button रखो (best practice) */}
+
             <button
               onClick={() => window.open(ticket.attachment, "_blank")}
               className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -126,7 +126,51 @@ function Allticket() {
         ) : (
           <p className="text-gray-600">No File</p>
         )}
+      </div> */}
+
+
+      <div className="mt-6">
+        <p className="font-bold mb-2">Attachment:</p>
+
+        {ticket.attachment ? (
+          <>
+            {ticket.attachment.includes(".pdf") ? (
+              <>
+                {/* ✅ PDF Preview */}
+                <iframe
+                  src={ticket.attachment}
+                  className="w-full h-[500px] border rounded"
+                  title="PDF Preview"
+                />
+
+                <p className="text-sm text-gray-500 mt-2">
+                  If PDF is not visible, use the button below.
+                </p>
+              </>
+            ) : (
+              <img
+                src={ticket.attachment}
+                alt="attachment"
+                className="w-full max-h-[400px] object-contain rounded border"
+              />
+            )}
+
+            {/* ✅ Download Button (IMPORTANT FIX) */}
+            <a
+              href={ticket.attachment.replace(
+                "/upload/",
+                "/upload/fl_attachment/"
+              )}
+              className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Download
+            </a>
+          </>
+        ) : (
+          <p className="text-gray-600">No File</p>
+        )}
       </div>
+
 
       <div className="flex flex-wrap justify-center gap-3 mt-8">
         <button
