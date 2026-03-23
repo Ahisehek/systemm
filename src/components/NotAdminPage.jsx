@@ -20,26 +20,29 @@ const NotAdminPage = () => {
   return (
 
 
-
-    <div className="min-h-screen flex flex-col items-center justify-center bg-red-50 px-4">
+    <div>
       <button
         onClick={() => navigate(-1)}
         className="bg-gray-700 text-white px-4 py-2 rounded"
       >
         ⬅ Back
       </button>
-      {/* Bouncing Lock Icon */}
-      <div className="text-6xl animate-bounce mb-4">🔒</div>
 
-      {/* Shaking Access Denied Text */}
-      <h1 className="text-3xl font-bold text-red-600 mb-2 animate-wiggle">
-        Access Denied!
-      </h1>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-red-50 px-4">
 
-      <p className="text-gray-700 text-center max-w-sm">
-        Sorry, this page is for <span className="font-semibold">admins only</span>.
-        You look more like a <span className="italic">cool user 😎</span>.
-      </p>
+        {/* Bouncing Lock Icon */}
+        <div className="text-6xl animate-bounce mb-4">🔒</div>
+
+        {/* Shaking Access Denied Text */}
+        <h1 className="text-3xl font-bold text-red-600 mb-2 animate-wiggle">
+          Access Denied!
+        </h1>
+
+        <p className="text-gray-700 text-center max-w-sm">
+          Sorry, this page is for <span className="font-semibold">admins only</span>.
+          You look more like a <span className="italic">cool user 😎</span>.
+        </p>
+      </div>
     </div>
   );
 };
