@@ -175,11 +175,18 @@ function Dash() {
                   <p>Not logged in</p>
                 )}
               </div>
+
               <Button
                 onClick={handleLogout}
                 className="bg-red-500 hover:bg-red-700 rounded-full text-sm sm:text-base"
               >
-                Log out
+                {user ? (
+
+                  <p>Log out</p>
+                ) : (
+                  <p>Log in</p>
+                )}
+
               </Button>
             </div>
           </div>
