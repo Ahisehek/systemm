@@ -30,6 +30,7 @@ import Eboard from "./components/Eboard";
 import NotAdminPage from "./components/NotAdminPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 function App() {
   return (
     <>
@@ -49,76 +50,80 @@ function App() {
             <Route path="allticket" element={<Allticket />} />
 
             {/* Dashboard with nested routes */}
-            <ProtectedRoute>
-              <Route path="/dashbord" element={<Dash />}>
-                <Route index element={<Eboard />} />
-                <Route
-                  path="master/bank"
-                  element={
 
-                    <Bank />
+            <Route path="/dashbord" element={
+              <ProtectedRoute>
+                <Dash />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Eboard />} />
+              <Route
+                path="master/bank"
+                element={
 
-                  }
-                />
-                <Route
-                  path="master/unit"
-                  element={
+                  <Bank />
 
-                    <St />
+                }
+              />
+              <Route
+                path="master/unit"
+                element={
 
-                  }
-                />
-                <Route
-                  path="master/site"
-                  element={
+                  <St />
 
-                    <Repo />
+                }
+              />
+              <Route
+                path="master/site"
+                element={
 
-                  }
-                />
-                <Route
-                  path="master/profile"
-                  element={
+                  <Repo />
 
-                    <Pro />
+                }
+              />
+              <Route
+                path="master/profile"
+                element={
 
-                  }
-                />
-                <Route path="action" element={<Home />} />
-                <Route
-                  path="master/gst"
-                  element={
+                  <Pro />
 
-                    <Gst />
+                }
+              />
+              <Route path="action" element={<Home />} />
+              <Route
+                path="master/gst"
+                element={
 
-                  }
-                />
-                <Route
-                  path="master/fleet"
-                  element={
+                  <Gst />
 
-                    <Fleet />
+                }
+              />
+              <Route
+                path="master/fleet"
+                element={
 
-                  }
-                />
-                <Route
-                  path="master/itemgroup"
-                  element={
+                  <Fleet />
 
-                    <Igroup />
+                }
+              />
+              <Route
+                path="master/itemgroup"
+                element={
 
-                  }
-                />
+                  <Igroup />
 
-                <Route path="entry/item" element={<Formm />} />
-                <Route path="entry/vender" element={<VenderForm />} />
-                <Route path="entry/vehicle" element={<VechleForm />} />
-                <Route path="entry/ticket" element={<TicketForm />} />
-                <Route path="notauthorized" element={<NotAdminPage />} />
+                }
+              />
+
+              <Route path="entry/item" element={<Formm />} />
+              <Route path="entry/vender" element={<VenderForm />} />
+              <Route path="entry/vehicle" element={<VechleForm />} />
+              <Route path="entry/ticket" element={<TicketForm />} />
+              <Route path="notauthorized" element={<NotAdminPage />} />
 
 
-              </Route>
-            </ProtectedRoute>
+            </Route>
+
           </Routes>
         </Router>
       </div>
