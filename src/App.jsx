@@ -28,6 +28,7 @@ import Allticket from "./pages/Allticket";
 import Igroup from "./components/Igroup";
 import Eboard from "./components/Eboard";
 import NotAdminPage from "./components/NotAdminPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 
@@ -52,8 +53,9 @@ function App() {
             {/* Dashboard with nested routes */}
 
             <Route path="/dashbord" element={
-
-              <Dash />
+              <ProtectedRoute>
+                <Dash />
+              </ProtectedRoute>
 
             }>
               <Route index element={<Eboard />} />
