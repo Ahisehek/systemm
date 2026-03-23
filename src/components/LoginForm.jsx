@@ -32,7 +32,7 @@ const LoginForm = () => {
         throw new Error(data.message || "Login failed");
       }
       console.log("success");
-      // await fetchUser();
+      await fetchUser();
       // navigate("/dashbord");
 
       setUser(data.user); // fallback to email if needed
