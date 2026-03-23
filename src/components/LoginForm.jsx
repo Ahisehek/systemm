@@ -35,7 +35,7 @@ const LoginForm = () => {
       // await fetchUser();
       // navigate("/dashbord");
 
-      setUser(data.user || { name: email }); // fallback to email if needed
+      setUser(data.user); // fallback to email if needed
 
       // ✅ Now navigate
       navigate("/dashbord");
