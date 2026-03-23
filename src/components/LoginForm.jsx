@@ -32,8 +32,8 @@ const LoginForm = () => {
         throw new Error(data.message || "Login failed");
       }
       console.log("success");
-      //await fetchUser();
-      setUser(data.user);
+      await fetchUser();
+
       navigate("/dashbord");
     } catch (err) {
       alert(err.message);
