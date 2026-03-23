@@ -32,8 +32,12 @@ const LoginForm = () => {
         throw new Error(data.message || "Login failed");
       }
       console.log("success");
-      await fetchUser();
+      // await fetchUser();
+      // navigate("/dashbord");
 
+      setUser(data.user || { name: email }); // fallback to email if needed
+
+      // ✅ Now navigate
       navigate("/dashbord");
     } catch (err) {
       alert(err.message);
