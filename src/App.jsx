@@ -53,9 +53,8 @@ function App() {
             {/* Dashboard with nested routes */}
 
             <Route path="/dashbord" element={
-              <ProtectedRoute>
-                <Dash />
-              </ProtectedRoute>
+              <Dash />
+
 
             }>
               <Route index element={<Eboard />} />

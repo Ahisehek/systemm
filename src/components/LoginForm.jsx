@@ -33,11 +33,6 @@ const LoginForm = () => {
       }
       console.log("success");
       await fetchUser();
-      // navigate("/dashbord");
-
-      setUser(data.user); // fallback to email if needed
-
-      // ✅ Now navigate
       navigate("/dashbord");
     } catch (err) {
       alert(err.message);
