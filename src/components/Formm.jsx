@@ -103,15 +103,15 @@ const ItemForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
+
 
       const response = await fetch("https://backendsystem-a26n.onrender.com/item/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          credentials: "include",
-          Authorization: `Bearer ${token}`,
+
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
