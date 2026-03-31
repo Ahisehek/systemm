@@ -373,7 +373,7 @@ function Dash() {
             {/* DESKTOP MENU */}
             <div className="hidden sm:flex gap-5 items-center text-slate-900">
 
-              <Link to="/dashbord" className="hover:bg-slate-800 px-3 py-1 rounded text-white">
+              <Link to="/dashbord" className="hover:bg-slate-800 px-3 py-1 rounded text-slate-800">
                 Home
               </Link>
 
@@ -438,7 +438,7 @@ function Dash() {
             </div>
           </div>
 
-          {/* 🔥 MOBILE MENU */}
+          {/*  MOBILE MENU */}
           {menuOpen && (
             <div className="sm:hidden bg-slate-800 text-white px-4 pb-4 pt-2 space-y-2">
 
@@ -498,7 +498,7 @@ function Dash() {
         </div>
 
         {/*  CONTENT */}
-        <div className="pt-5">
+        <div className="pt-10">
           <div className="flex justify-center ">
             <div className=" ">
               <Outlet />
