@@ -335,7 +335,7 @@ function Dash() {
     <div>
       <div className="bg-slate-200 min-h-screen">
 
-        {/* 🔥 NAVBAR */}
+        {/*  NAVBAR */}
         <div className="bg-gradient-to-r from-slate-900 via-white to-slate-900 text-white font-bold fixed top-0 w-full z-50 shadow-md border-b border-blue-950">
           <div className="flex items-center justify-between px-4 sm:px-6 lg:px-10 h-14">
 
@@ -497,11 +497,11 @@ function Dash() {
           )}
         </div>
 
-        {/* 🔥 CONTENT */}
+        {/*  CONTENT */}
         <div className="pt-16">
           <div className="flex justify-center py-10">
-            <div className="w-full max-w-7xl">
-              <Outlet /> {/* ✅ FIXED */}
+            <div className="w-full ">
+              <Outlet />
             </div>
           </div>
         </div>
