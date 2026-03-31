@@ -97,24 +97,6 @@ function Allticket() {
         />
       </div>
 
-      {/* <div className="mt-6">
-        <p className="font-bold mb-2">Attachment:</p>
-        {ticket.attachment ? (
-          <button
-            onClick={() =>
-              window.open(
-                `https://backendsystem-a26n.onrender.com/uploads/ticketPics/${ticket.attachment}`,
-                "_blank"
-              )
-            }
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          >
-            View Attachment
-          </button>
-        ) : (
-          <p className="text-gray-600">No File</p>
-        )}
-      </div> */}
 
 
 
@@ -124,10 +106,10 @@ function Allticket() {
 
         {ticket?.attachment ? (
           <>
-            {/* ✅ PDF detection */}
+            {/* ✅ PDF Detection */}
             {ticket.attachment.toLowerCase().includes(".pdf") ? (
               <>
-                {/* ✅ PDF: show link instead of iframe */}
+                {/* ✅ PDF Preview */}
                 <a
                   href={ticket.attachment}
                   target="_blank"
@@ -138,7 +120,7 @@ function Allticket() {
                 </a>
               </>
             ) : (
-              /* ✅ Image preview */
+              /* ✅ Image Preview */
               <img
                 src={ticket.attachment}
                 alt="attachment"
@@ -146,32 +128,13 @@ function Allticket() {
               />
             )}
 
-            {/* ✅ Download Button (both PDF & Images) */}
-            <button
-              onClick={() => {
-                fetch(ticket.attachment)
-                  .then((res) => res.blob())
-                  .then((blob) => {
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = url;
-
-                    // ✅ proper file name
-                    const fileName = ticket.attachment.split("/").pop();
-                    link.download = fileName || "file";
-
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-                  })
-                  .catch(() => {
-                    alert("Download failed");
-                  });
-              }}
-              className="mt-3 px-4 py-2 bg-blue-600 text-white rounded"
+            {/* ✅ Download Button (ImageKit optimized 🔥) */}
+            <a
+              href={`${ticket.attachment}?ik-attachment=true`}
+              className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded"
             >
               Download
-            </button>
+            </a>
           </>
         ) : (
           <p className="text-gray-600">No File</p>

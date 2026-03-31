@@ -1,7 +1,7 @@
 import { useItemContext } from "../context/ItemContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+
 
 function Itemall() {
   const [loading, setLoading] = useState(true);

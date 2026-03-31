@@ -192,7 +192,7 @@ function Dash() {
           </div>
 
           {/* Mobile Dropdown Menu */}
-          {/* {menuOpen && (
+          {menuOpen && (
             <div className="sm:hidden bg-slate-800 text-white px-4 pb-4 pt-2 space-y-2">
               <Link
                 to=""
@@ -272,7 +272,7 @@ function Dash() {
                 </Button>
               </div>
             </div>
-          )} */}
+          )}
         </div>
 
         {/* <ToastContainer position="top-right" autoClose={3000} /> */}

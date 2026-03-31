@@ -150,8 +150,67 @@ const DetailField = ({ label, value }) => {
   );
 };
 
+
+const AttachmentField = ({ label, file }) => {
+  const fileUrl = file;
+
+  // 🔥 Better detection (extension + fallback)
+  const isPDF =
+    fileUrl?.toLowerCase().includes(".pdf") ||
+    fileUrl?.includes("application/pdf");
+
+  return (
+    <div className="bg-gray-50 p-3 rounded shadow-sm flex flex-col items-center">
+      <span className="font-semibold mb-2">{label}</span>
+
+      {fileUrl ? (
+        <>
+          {/* ✅ Preview */}
+          {isPDF ? (
+            <iframe
+              src={fileUrl}
+              title="PDF Preview"
+              className="w-full h-[200px] border rounded mb-2"
+            />
+          ) : (
+            <img
+              src={fileUrl}
+              alt="attachment"
+              className="w-full h-[200px] object-contain rounded border mb-2"
+            />
+          )}
+
+          {/* ✅ Buttons */}
+          <div className="flex gap-2 mt-2">
+            {/* 👁️ View */}
+            <a
+              href={fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 bg-gray-200 rounded"
+            >
+              View
+            </a>
+
+            {/* ⬇️ Download (ImageKit 🔥) */}
+            <a
+              href={`${fileUrl}?ik-attachment=true`}
+              className="px-3 py-1 bg-blue-600 text-white rounded"
+            >
+              Download
+            </a>
+          </div>
+        </>
+      ) : (
+        <span className="text-gray-500">No File</span>
+      )}
+    </div>
+  );
+};
+
 // const AttachmentField = ({ label, file }) => {
-//   const fileUrl = `http://localhost:5000/uploads/vehiclePics/${file}`;
+  
+//   const fileUrl = file; // 🔥 Cloudinary URL directly
 //   const isPDF = file?.toLowerCase().endsWith(".pdf");
 
 //   return (
@@ -160,13 +219,16 @@ const DetailField = ({ label, value }) => {
 
 //       {file ? (
 //         <>
-//           {/* 👇 Preview */}
+//           {/* ✅ PDF: link only, Image: preview */}
 //           {isPDF ? (
-//             <iframe
-//               src={fileUrl}
-//               title="PDF Preview"
-//               className="w-full h-[200px] border rounded mb-2"
-//             />
+//             <a
+//               href={fileUrl}
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="text-blue-600 underline mb-2"
+//             >
+//               📄 View PDF
+//             </a>
 //           ) : (
 //             <img
 //               src={fileUrl}
@@ -175,7 +237,7 @@ const DetailField = ({ label, value }) => {
 //             />
 //           )}
 
-//           {/* 👇 Open Full */}
+//           {/* ✅ Open Full button for both */}
 //           <button
 //             onClick={() => window.open(fileUrl, "_blank")}
 //             className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
@@ -189,48 +251,3 @@ const DetailField = ({ label, value }) => {
 //     </div>
 //   );
 // };
-
-
-
-const AttachmentField = ({ label, file }) => {
-  const fileUrl = file; // 🔥 Cloudinary URL directly
-  const isPDF = file?.toLowerCase().endsWith(".pdf");
-
-  return (
-    <div className="bg-gray-50 p-3 rounded shadow-sm flex flex-col items-center">
-      <span className="font-semibold mb-2">{label}</span>
-
-      {file ? (
-        <>
-          {/* ✅ PDF: link only, Image: preview */}
-          {isPDF ? (
-            <a
-              href={fileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 underline mb-2"
-            >
-              📄 View PDF
-            </a>
-          ) : (
-            <img
-              src={fileUrl}
-              alt="attachment"
-              className="w-full h-[200px] object-contain rounded border mb-2"
-            />
-          )}
-
-          {/* ✅ Open Full button for both */}
-          <button
-            onClick={() => window.open(fileUrl, "_blank")}
-            className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          >
-            Open Full
-          </button>
-        </>
-      ) : (
-        <span className="text-gray-500">No File</span>
-      )}
-    </div>
-  );
-};

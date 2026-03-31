@@ -28,7 +28,7 @@ import Allticket from "./pages/Allticket";
 import Igroup from "./components/Igroup";
 import Eboard from "./components/Eboard";
 import NotAdminPage from "./components/NotAdminPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+
 
 
 
@@ -37,7 +37,6 @@ function App() {
     <>
       <div className="overflow-auto scrollbar-hide h-screen  ">
         <Router>
-          <ToastContainer position="top-right" autoClose={2000} />
           <Routes>
             {/* Public routes */}
             <Route path="/" element={<LoginForm />} />
@@ -57,6 +56,7 @@ function App() {
 
 
             }>
+              <ToastContainer position="top-right" autoClose={2000} />
               <Route index element={<Eboard />} />
               <Route
                 path="master/bank"

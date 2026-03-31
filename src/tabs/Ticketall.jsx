@@ -3,31 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useItemContext } from "@/context/ItemContext";
-import { io } from "socket.io-client";
+
 
 function Ticketall() {
-  const { tickets, setTickets, user, loadingUser } =
+  const { tickets, setTickets } =
     useItemContext();
   const navigate = useNavigate();
   //const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showOnlyPending, setShowOnlyPending] = useState(false);
-
-  // useEffect(() => {
-  //   const socket = io("http://localhost:5000", {
-  //     withCredentials: true,
-  //   });
-
-  //   socket.on("ticket_added", (newTicket) => {
-  //     console.log("New ticket received via socket:", newTicket);
-  //     setTickets((prevTickets) => [newTicket, ...prevTickets]);
-  //   });
-
-  //   return () => {
-  //     socket.disconnect();
-  //   };
-  // }, []);
 
   useEffect(() => {
     const fetchTickets = async () => {
