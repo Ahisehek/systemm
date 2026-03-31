@@ -498,9 +498,9 @@ function Dash() {
         </div>
 
         {/*  CONTENT */}
-        <div className="pt-16">
-          <div className="flex justify-center py-10">
-            <div className="">
+        <div className="pt-5">
+          <div className="flex justify-center ">
+            <div className=" ">
               <Outlet />
             </div>
           </div>
