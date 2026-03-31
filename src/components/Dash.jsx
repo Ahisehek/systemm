@@ -500,7 +500,7 @@ function Dash() {
         {/*  CONTENT */}
         <div className="pt-16">
           <div className="flex justify-center py-10">
-            <div className="w-full ">
+            <div className="">
               <Outlet />
             </div>
           </div>
