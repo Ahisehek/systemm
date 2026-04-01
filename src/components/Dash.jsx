@@ -379,10 +379,10 @@ function Dash() {
 
               {/* MASTER */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-white">
+                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-slate-800">
                   Master
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white text-black shadow">
+                <DropdownMenuContent className="bg-white text-slate-800 shadow">
                   {["bank", "unit", "site", "gst", "fleet", "itemgroup", "profile"].map((route) => (
                     <DropdownMenuItem key={route}>
                       <Link to={`/dashbord/master/${route}`} className="w-full capitalize">
@@ -395,10 +395,10 @@ function Dash() {
 
               {/* ENTRY */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-white">
+                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-slate-800">
                   Entry
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white text-black shadow">
+                <DropdownMenuContent className="bg-white text-slate-800 shadow">
                   {["item", "vender", "vehicle", "ticket"].map((route) => (
                     <DropdownMenuItem key={route}>
                       <Link to={`/dashbord/entry/${route}`} className="w-full capitalize">
@@ -411,7 +411,7 @@ function Dash() {
 
               <Link
                 to="/dashbord/action"
-                className="hover:bg-slate-800 px-3 py-1 rounded text-white"
+                className="hover:bg-slate-800 px-3 py-1 rounded text-slate-800"
               >
                 Action
               </Link>
@@ -498,7 +498,7 @@ function Dash() {
         </div>
 
         {/*  CONTENT */}
-        <div className="pt-10">
+        <div className="pt-15">
           <div className="flex justify-center ">
             <div className=" ">
               <Outlet />
