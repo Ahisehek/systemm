@@ -29,7 +29,7 @@ function Home() {
     <div>
       <div className="">
 
-        <div className="w-screen  bg-slate-200  px-5  max-sm:overflow-scroll  ">
+        <div className="w-screen  bg-slate-200   max-sm:px-4  max-sm:overflow-scroll  ">
           <div id="tab   ">
             <Tabs
               value={activeTab}
