@@ -92,20 +92,16 @@ function Eboard() {
   const rows = computeSiteCounts();
 
 
-  return (
-    <div className="min-h-screen bg-gray-100 p-3 sm:p-5 md:p-8">
 
-      {/* Heading */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl text-center font-bold mb-6 text-slate-800">
+  return (
+    <div className="p-8  h-100 text-black w-screen  max-sm:px-5 max-sm:w-100 max-sm:p-0">
+      <h2 className="text-3xl  flex justify-center font-bold  mb-6 text-slate-800">
         Status Overview
       </h2>
 
-      {/* Filter Section */}
-      <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center gap-3 mb-6">
-        <label className="text-sm sm:text-base font-semibold">
-          Filter by Status:
-        </label>
-
+      {/* Status Filter */}
+      <div className="flex justify-end items-center gap-4 mb-6">
+        <label className="text-lg font-semibold">Filter by Status:</label>
         <select
           value={selectedStatus}
           onChange={(e) => {
@@ -114,7 +110,7 @@ function Eboard() {
               setSelectedStatus(value);
             }
           }}
-          className={`w-full sm:w-auto px-3 sm:px-4 py-2 rounded-lg border focus:outline-none transition ${statusColors[selectedStatus]}`}
+          className={`px-4 py-2 rounded-lg border focus:outline-none transition-all duration-200 ease-in-out ${statusColors[selectedStatus]}`}
         >
           <option value="all">All</option>
           <option value="approved">Approved</option>
@@ -123,128 +119,41 @@ function Eboard() {
         </select>
       </div>
 
-      {/* Content */}
+      {/* Table */}
       {loading ? (
-        <p className="text-center text-gray-500">Loading data...</p>
+        <p className="text-center text-lg text-gray-500">Loading data...</p>
       ) : error ? (
-        <p className="text-center text-red-600">{error}</p>
+        <p className="text-center text-lg text-red-600">{error}</p>
       ) : rows.length === 0 ? (
-        <p className="text-center text-gray-600">No data available.</p>
+        <p className="text-center text-lg text-gray-600">No data available.</p>
       ) : (
-        <div className="bg-white rounded-xl shadow-md p-2 sm:p-4">
-
-          {/* Table Scroll Wrapper */}
-          <div className="overflow-x-auto">
-            <table className="min-w-[500px] w-full border text-left">
-
-              <thead className="bg-slate-800 text-white text-sm sm:text-base">
-                <tr>
-                  <th className="p-2 sm:p-3 border">Site</th>
-                  <th className="p-2 sm:p-3 border">Items</th>
-                  <th className="p-2 sm:p-3 border">Vendors</th>
-                  <th className="p-2 sm:p-3 border">Vehicles</th>
-                  <th className="p-2 sm:p-3 border">Tickets</th>
+        <div className="overflow-x-auto rounded-lg">
+          <table className="w-full border text-left  rounded shadow">
+            <thead className="bg-slate-800 text-white">
+              <tr>
+                <th className="p-2 border">Site</th>
+                <th className="p-2 border">Items</th>
+                <th className="p-2 border">Vendors</th>
+                <th className="p-2 border">Vehicles</th>
+                <th className="p-2 border">Tickets</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index} className="bg-white rounded">
+                  <td className="p-2 border font-semibold">{row.siteName}</td>
+                  <td className="p-2 border text-center">{row.items}</td>
+                  <td className="p-2 border text-center">{row.vendors}</td>
+                  <td className="p-2 border text-center">{row.vehicles}</td>
+                  <td className="p-2 border text-center">{row.tickets}</td>
                 </tr>
-              </thead>
-
-              <tbody>
-                {rows.map((row, index) => (
-                  <tr
-                    key={index}
-                    className="hover:bg-gray-50 transition"
-                  >
-                    <td className="p-2 sm:p-3 border font-semibold break-words">
-                      {row.siteName}
-                    </td>
-
-                    <td className="p-2 sm:p-3 border text-center">
-                      {row.items}
-                    </td>
-
-                    <td className="p-2 sm:p-3 border text-center">
-                      {row.vendors}
-                    </td>
-
-                    <td className="p-2 sm:p-3 border text-center">
-                      {row.vehicles}
-                    </td>
-
-                    <td className="p-2 sm:p-3 border text-center">
-                      {row.tickets}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
   );
-
-
-  // return (
-  //   <div className="p-8  h-100 text-black w-screen  max-sm:px-5 max-sm:w-100 max-sm:p-0">
-  //     <h2 className="text-3xl  flex justify-center font-bold  mb-6 text-slate-800">
-  //       Status Overview
-  //     </h2>
-
-  //     {/* Status Filter */}
-  //     <div className="flex justify-end items-center gap-4 mb-6">
-  //       <label className="text-lg font-semibold">Filter by Status:</label>
-  //       <select
-  //         value={selectedStatus}
-  //         onChange={(e) => {
-  //           const value = e.target.value;
-  //           if (value !== selectedStatus) {
-  //             setSelectedStatus(value);
-  //           }
-  //         }}
-  //         className={`px-4 py-2 rounded-lg border focus:outline-none transition-all duration-200 ease-in-out ${statusColors[selectedStatus]}`}
-  //       >
-  //         <option value="all">All</option>
-  //         <option value="approved">Approved</option>
-  //         <option value="pending">Pending</option>
-  //         <option value="rejected">Rejected</option>
-  //       </select>
-  //     </div>
-
-  //     {/* Table */}
-  //     {loading ? (
-  //       <p className="text-center text-lg text-gray-500">Loading data...</p>
-  //     ) : error ? (
-  //       <p className="text-center text-lg text-red-600">{error}</p>
-  //     ) : rows.length === 0 ? (
-  //       <p className="text-center text-lg text-gray-600">No data available.</p>
-  //     ) : (
-  //       <div className="overflow-x-auto rounded-lg">
-  //         <table className="w-full border text-left  rounded shadow">
-  //           <thead className="bg-slate-800 text-white">
-  //             <tr>
-  //               <th className="p-2 border">Site</th>
-  //               <th className="p-2 border">Items</th>
-  //               <th className="p-2 border">Vendors</th>
-  //               <th className="p-2 border">Vehicles</th>
-  //               <th className="p-2 border">Tickets</th>
-  //             </tr>
-  //           </thead>
-  //           <tbody>
-  //             {rows.map((row, index) => (
-  //               <tr key={index} className="bg-white rounded">
-  //                 <td className="p-2 border font-semibold">{row.siteName}</td>
-  //                 <td className="p-2 border text-center">{row.items}</td>
-  //                 <td className="p-2 border text-center">{row.vendors}</td>
-  //                 <td className="p-2 border text-center">{row.vehicles}</td>
-  //                 <td className="p-2 border text-center">{row.tickets}</td>
-  //               </tr>
-  //             ))}
-  //           </tbody>
-  //         </table>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 }
 
 export default Eboard;
