@@ -594,10 +594,11 @@ function Dash() {
         </div>
 
         {/*  CONTENT */}
-        {/* CONTENT */}
-        <div className="pt-16">
-          <div className="max-w-screen-xl mx-auto px-2 sm:px-4">
-            <Outlet />
+        <div className="">
+          <div className="">
+            <div className="flex justify-center  mt-15">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
