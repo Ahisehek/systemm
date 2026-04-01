@@ -79,6 +79,7 @@ function Igroup() {
 
           <div className="flex flex-col sm:flex-row gap-3">
             <input
+              placeholder="item group"
               value={igroupName}
               onChange={(e) => setIgroupName(e.target.value.toUpperCase())}
               className="flex-1 border px-3 py-2 rounded"
@@ -91,22 +92,24 @@ function Igroup() {
 
         <div className="bg-white text-slate-900 rounded-xl shadow p-4 sm:p-6">
           <h2 className="text-xl text-center mb-4">Igroup List</h2>
-
-          <div className="overflow-x-auto">
-            <table className="min-w-[400px] w-full">
-              <tbody>
-                {igroupList.map((i, idx) => (
-                  <tr key={idx}>
-                    <td className="p-2 border">{i.name}</td>
-                    <td className="text-center border">
-                      <button onClick={() => handleDelete(i.name)}>🗑</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
+          {igroupList.length === 0 ? (
+            <p className="text-center text-slate-500">No banks added.</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="min-w-[400px] w-full">
+                <tbody>
+                  {igroupList.map((i, idx) => (
+                    <tr key={idx}>
+                      <td className="p-2 border">{i.name}</td>
+                      <td className="text-center border">
+                        <button onClick={() => handleDelete(i.name)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
       </div>

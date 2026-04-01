@@ -81,6 +81,7 @@ function Repo() {
     try {
       const response = await fetch(`${API_URL}/${unitId}`, {
         method: "DELETE",
+        credentials: "include",
       });
 
       if (!response.ok) {

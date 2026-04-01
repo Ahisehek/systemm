@@ -55,6 +55,7 @@ function Fleet() {
     try {
       const res = await fetch(`${API_URL}/delete/${encodeURIComponent(name)}`, {
         method: "DELETE",
+        credentials: "include",
       });
 
       const data = await res.json();

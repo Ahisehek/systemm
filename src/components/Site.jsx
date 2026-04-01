@@ -111,58 +111,69 @@ function Repo() {
           <h2 className="text-xl sm:text-2xl mb-4">Add Site</h2>
 
           <div className="flex flex-col gap-3">
-            <input value={fullName} onChange={(e) => setFullName(e.target.value)} className="border p-2 rounded" />
-            <input value={sortName} onChange={(e) => setSortName(e.target.value)} className="border p-2 rounded" />
+            <input value={fullName} placeholder="site name" onChange={(e) => setFullName(e.target.value)} className="border p-2 rounded" />
+            <input value={sortName} placeholder="state name" onChange={(e) => setSortName(e.target.value)} className="border p-2 rounded" />
             <button onClick={handleSave} className="bg-slate-800 text-white py-2 rounded">Save</button>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-[400px] w-full border-collapse">
+        <div className="bg-white text-slate-900 rounded-xl shadow-lg p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-slate-800 text-center">
+            site List
+          </h2>
 
-            <thead className="bg-slate-800 text-white text-sm sm:text-base">
-              <tr>
-                <th className="p-2">Sort</th>
-                <th className="p-2">Full Name</th>
-                <th className="p-2 text-center">Action</th>
-              </tr>
-            </thead>
+          {sites.length === 0 ? (
+            <p className="text-center text-slate-500">No banks added.</p>
+          ) : (
 
-            <tbody>
-              {sites.map((s) => {
-                const isMatch =
-                  fullName.trim() &&
-                  s.fullName.toLowerCase().startsWith(fullName.toLowerCase());
+            <div className="overflow-x-auto">
+              <table className="min-w-[400px] w-full border-collapse">
 
-                return (
-                  <tr
-                    key={s._id}
-                    className={`${isMatch ? "bg-yellow-100" : "hover:bg-gray-100"
-                      } transition`}
-                  >
-                    <td className="p-2 border text-center">
-                      {s.sortName}
-                    </td>
-
-                    <td className="p-2 border break-words">
-                      {truncateText(s.fullName)}
-                    </td>
-
-                    <td className="p-2 border text-center">
-                      <button
-                        onClick={() => handleDelete(s._id)}
-                        className="text-red-600 hover:text-red-800 text-lg"
-                        title="Delete"
-                      >
-                        <FontAwesomeIcon icon={faTrashCan} />
-                      </button>
-                    </td>
+                <thead className="bg-slate text-white text-sm sm:text-base">
+                  <tr>
+                    <th className="p-2">Sort</th>
+                    <th className="p-2">Full Name</th>
+                    <th className="p-2 text-center">Action</th>
                   </tr>
-                );
-              })}
-            </tbody>
+                </thead>
 
-          </table>
+                <tbody>
+                  {sites.map((s) => {
+                    const isMatch =
+                      fullName.trim() &&
+                      s.fullName.toLowerCase().startsWith(fullName.toLowerCase());
+
+                    return (
+                      <tr
+                        key={s._id}
+                        className={`${isMatch ? "bg-yellow-100" : "hover:bg-gray-100"
+                          } transition`}
+                      >
+                        <td className="p-2 border text-center">
+                          {s.sortName}
+                        </td>
+
+                        <td className="p-2 border break-words">
+                          {truncateText(s.fullName)}
+                        </td>
+
+                        <td className="p-2 border text-center">
+                          <button
+                            onClick={() => handleDelete(s._id)}
+                            className="text-red-600 hover:text-red-800 text-lg"
+                            title="Delete"
+                          >
+                            <FontAwesomeIcon icon={faTrashCan} />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+
+              </table>
+            </div>
+          )}
         </div>
 
       </div>
