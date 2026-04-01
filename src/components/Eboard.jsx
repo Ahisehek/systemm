@@ -94,7 +94,7 @@ function Eboard() {
 
 
   return (
-    <div className="p-8  h-100 text-black w-screen  max-sm:px-5">
+    <div className="p-8  h-100 text-black w-screen  max-sm:px-4">
       <h2 className="text-3xl  flex justify-center font-bold  mb-6 text-slate-800">
         Status Overview
       </h2>

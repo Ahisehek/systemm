@@ -307,6 +307,7 @@ import {
 function Dash() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
   const { user, loadingUser } = useItemContext();
 
   const handleLogout = async () => {
@@ -439,7 +440,102 @@ function Dash() {
           </div>
 
           {/*  MOBILE MENU */}
+
+
           {menuOpen && (
+            <div className="sm:hidden bg-slate-800 text-white px-4 pb-4 pt-2 space-y-2 rounded-b-xl">
+
+              {/* Home */}
+              <Link
+                to="/dashbord"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 border-b border-slate-700"
+              >
+                Home
+              </Link>
+
+              {/* MASTER DROPDOWN */}
+              <div>
+                <button
+                  onClick={() =>
+                    setOpenMenu(openMenu === "master" ? null : "master")
+                  }
+                  className="w-full flex justify-between items-center py-2 border-b border-slate-700"
+                >
+                  <span className="font-semibold">Master</span>
+                  <span>{openMenu === "master" ? "▲" : "▼"}</span>
+                </button>
+
+                {openMenu === "master" && (
+                  <div className="pl-4 mt-2 space-y-1">
+                    {["bank", "unit", "site", "gst", "fleet", "itemgroup", "profile"].map((route) => (
+                      <Link
+                        key={route}
+                        to={`/dashbord/master/${route}`}
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-1 text-sm hover:text-yellow-300"
+                      >
+                        {route}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* ENTRY DROPDOWN */}
+              <div>
+                <button
+                  onClick={() =>
+                    setOpenMenu(openMenu === "entry" ? null : "entry")
+                  }
+                  className="w-full flex justify-between items-center py-2 border-b border-slate-700"
+                >
+                  <span className="font-semibold">Entry</span>
+                  <span>{openMenu === "entry" ? "▲" : "▼"}</span>
+                </button>
+
+                {openMenu === "entry" && (
+                  <div className="pl-4 mt-2 space-y-1">
+                    {["item", "vender", "vehicle", "ticket"].map((route) => (
+                      <Link
+                        key={route}
+                        to={`/dashbord/entry/${route}`}
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-1 text-sm hover:text-yellow-300"
+                      >
+                        {route}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Action */}
+              <Link
+                to="/dashbord/action"
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 border-b border-slate-700"
+              >
+                Action
+              </Link>
+
+              {/* User Section */}
+              <div className="mt-4 border-t border-slate-700 pt-3">
+                <p className="text-sm">{user?.name || "User"}</p>
+
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setMenuOpen(false);
+                  }}
+                  className="mt-2 w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          )}
+          {/* {menuOpen && (
             <div className="sm:hidden bg-slate-800 text-white px-4 pb-4 pt-2 space-y-2">
 
               <Link to="/dashbord" onClick={() => setMenuOpen(false)}>
@@ -494,7 +590,7 @@ function Dash() {
                 </Button>
               </div>
             </div>
-          )}
+          )} */}
         </div>
 
         {/*  CONTENT */}
