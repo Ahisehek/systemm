@@ -596,7 +596,7 @@ function Dash() {
         {/*  CONTENT */}
         <div className="">
           <div className="">
-            <div className="flex justify-center  mt-15">
+            <div className="flex justify-center">
               <Outlet />
             </div>
           </div>
