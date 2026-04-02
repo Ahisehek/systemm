@@ -174,7 +174,7 @@ const VendorForm = () => {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-bold text-slate-800  bg-white flex justify-center">
+      <h2 className="text-2xl font-bold text-slate-800  bg-white flex justify-center rounded">
         NEW VENDOR
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black shadow rounded-lg max-sm:w-100">
@@ -418,7 +418,7 @@ const VendorForm = () => {
               ["rent", "RENT "],
             ].map(([field, label]) => (
               <div key={field}>
-                <label className="text-gray-700 font-medium mb-1">
+                <label className="text-gray-700 font-medium mb-1 block">
                   {label}
                 </label>
                 <input

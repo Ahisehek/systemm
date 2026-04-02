@@ -149,7 +149,7 @@ const ItemForm = () => {
   return (
     <>
       <div className=" p-2 ">
-        <h2 className="text-2xl  font-semibold  text-slate-800 bg-white flex justify-center">
+        <h2 className="text-2xl  font-semibold  text-slate-800 bg-white flex justify-center rounded">
           NEW ITEM
         </h2>
         <form
