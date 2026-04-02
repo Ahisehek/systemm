@@ -334,7 +334,7 @@ function Dash() {
 
   return (
     <div>
-      <div className="bg-slate-200 h-screen">
+      <div className="bg-slate-200 h-screen overflow-hidden">
 
         {/*  NAVBAR */}
 
@@ -598,7 +598,10 @@ function Dash() {
         {/*  CONTENT */}
         <div className="">
           <div className="">
-            <div className="flex justify-center pt-15">
+            {/* <div className="flex justify-center pt-15">
+              <Outlet />
+            </div> */}
+            <div className="flex justify-center pt-16 h-[calc(100vh-56px)] overflow-auto hide-scrollbar">
               <Outlet />
             </div>
           </div>
