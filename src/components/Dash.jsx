@@ -334,7 +334,7 @@ function Dash() {
 
   return (
     <div>
-      <div className="bg-slate-200 h-screen">
+      <div className="bg-slate-200 max-h-screen">
 
         {/*  NAVBAR */}
 
@@ -598,15 +598,15 @@ function Dash() {
         {/*  CONTENT */}
         <div className="">
           <div className="">
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-15">
               <Outlet />
             </div>
           </div>
         </div>
-        <Footer />
       </div>
 
       {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
