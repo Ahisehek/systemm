@@ -376,13 +376,13 @@ function Dash() {
             {/* DESKTOP MENU */}
             <div className="hidden sm:flex gap-5 items-center text-slate-900">
 
-              <Link to="/dashbord" className="hover:bg-slate-800 px-3 py-1 rounded text-slate-800">
+              <Link to="/dashbord" className="hover:bg-slate-800 hover:text-white px-3 py-1 rounded text-slate-800">
                 Home
               </Link>
 
               {/* MASTER */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-slate-800">
+                <DropdownMenuTrigger className="hover:bg-slate-800 hover:text-white px-3 py-1 rounded cursor-pointer text-slate-800">
                   Master
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-slate-800 shadow">
@@ -398,7 +398,7 @@ function Dash() {
 
               {/* ENTRY */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="hover:bg-slate-800 px-3 py-1 rounded cursor-pointer text-slate-800">
+                <DropdownMenuTrigger className="hover:bg-slate-800 hover:text-white px-3 py-1 rounded cursor-pointer text-slate-800">
                   Entry
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-slate-800 shadow">
@@ -414,7 +414,7 @@ function Dash() {
 
               <Link
                 to="/dashbord/action"
-                className="hover:bg-slate-800 px-3 py-1 rounded text-slate-800"
+                className="hover:bg-slate-800 hover:text-white px-3 py-1 rounded text-slate-800"
               >
                 Action
               </Link>
@@ -606,8 +606,7 @@ function Dash() {
         </div>
       </div>
 
-      {/* FOOTER */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -117,7 +117,7 @@ function TicketForm() {
   return (
     <>
       <div className="p-2">
-        <h2 className="text-2xl font-semibold w-fit text-slate-800 bg-white flex justify-center">
+        <h2 className="text-2xl font-semibold  text-slate-800 bg-white flex justify-center">
           TICKETING EXPRESS
         </h2>
         <div className="w-300 mx-auto text-black   p-6 bg-white rounded shadow max-sm:w-100">
@@ -264,7 +264,7 @@ function TicketForm() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+                className="bg-slate-800 text-white px-6 py-2 rounded hover:bg-slate-900 transition"
               >
                 Submit
               </button>

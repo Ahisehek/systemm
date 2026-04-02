@@ -174,7 +174,7 @@ const VendorForm = () => {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-bold text-slate-800 w-fit bg-white flex justify-center">
+      <h2 className="text-2xl font-bold text-slate-800  bg-white flex justify-center">
         NEW VENDOR
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black shadow rounded-lg max-sm:w-100">
@@ -432,7 +432,7 @@ const VendorForm = () => {
                 />
                 <label
                   htmlFor={field}
-                  className="cursor-pointer bg-slate-800 hover:bg-slate-900 text-white px-3 py-1  rounded"
+                  className="cursor-pointer bg-slate-800 hover:bg-slate-900 text-white px-3 py-1  rounded inline-block"
                 >
                   Choose File
                 </label>
