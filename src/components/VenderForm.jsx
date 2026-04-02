@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { redirect } from "react-router-dom";
 
 const VendorForm = () => {
   const formRef = useRef(null);
@@ -33,6 +34,8 @@ const VendorForm = () => {
       panCard: null,
       cancelledCheque: null,
       msme: null,
+      itr: null,
+      rent: null,
     },
   });
 
@@ -148,12 +151,15 @@ const VendorForm = () => {
           panCard: null,
           cancelledCheque: null,
           msme: null,
+          itr: null,
+          rent: null,
         },
       });
 
       if (formRef.current) formRef.current.reset();
     } catch (err) {
       console.error("Error submitting vendor:", err);
+      redirect("/");
       alert("Error submitting vendor, see console");
     }
   };
@@ -400,6 +406,8 @@ const VendorForm = () => {
               ["panCard", "PAN Card "],
               ["cancelledCheque", " Cancelled Cheque"],
               ["msme", "MSME "],
+              ["itr", "ITR "],
+              ["rent", "RENT "],
             ].map(([field, label]) => (
               <div key={field}>
                 <label className="text-gray-700 font-medium mb-1">
@@ -416,7 +424,7 @@ const VendorForm = () => {
                 />
                 <label
                   htmlFor={field}
-                  className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-3  rounded"
+                  className="cursor-pointer bg-slate-800 hover:bg-slate-900 text-white px-3 py-1  rounded"
                 >
                   Choose File
                 </label>
@@ -431,7 +439,7 @@ const VendorForm = () => {
           <div className="pt-4 flex justify-center ">
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+              className="bg-slate-800 text-white px-6 py-2 rounded hover:bg-slate-900 transition"
             >
               Submit
             </button>

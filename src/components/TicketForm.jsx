@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { redirect } from "react-router-dom";
 
 function TicketForm() {
   //clear the form after submitting
@@ -101,6 +102,7 @@ function TicketForm() {
       }
     } catch (err) {
       console.error("Error submitting vehicle data:", err);
+      redirect("/");
       alert("Error saving vehicle data");
     }
   };
@@ -238,7 +240,7 @@ function TicketForm() {
                 />
                 <label
                   htmlFor="attachment"
-                  className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+                  className="cursor-pointer bg-slate-800 hover:bg-slate-900 text-white px-4 py-2 rounded"
                 >
                   Choose File
                 </label>

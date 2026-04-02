@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { redirect } from "react-router-dom";
 
 function VehicleForm() {
   const [sites, setSites] = useState([]);
@@ -123,14 +124,15 @@ function VehicleForm() {
       }
     } catch (err) {
       console.error("Error submitting vehicle data:", err);
+      redirect("/");
       alert("Error saving vehicle data");
     }
   };
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-semibold text-white bg-gradient-to-r from-slate-200 via-slate-800 to-slate-200 mb-6 flex justify-center">
-        VEHICLE DETAILS
+      <h2 className="text-2xl font-semibold text-slate-800 bg-white rounded flex justify-center">
+        NEW VEHICLE
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black rounded shadow max-sm:w-100">
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -256,7 +258,7 @@ function VehicleForm() {
                 />
                 <label
                   htmlFor={field}
-                  className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded inline-block"
+                  className="cursor-pointer bg-slate-800 hover:bg-slate-900 text-white px-3 py-1 rounded inline-block"
                 >
                   Choose File
                 </label>
@@ -271,7 +273,7 @@ function VehicleForm() {
           <div className="pt-4 flex justify-center">
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+              className="bg-slate-800 text-white px-6 py-2 rounded hover:bg-slate-900 transition"
             >
               Submit
             </button>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { redirect } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -134,6 +135,7 @@ const ItemForm = () => {
       }
     } catch (error) {
       console.error("Error during form submission:", error);
+      redirect("/");
       alert("Error during form submission");
     }
   };
@@ -290,7 +292,7 @@ const ItemForm = () => {
           <div className="flex justify-center bg-white ">
             <button
               type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+              className="px-6 py-2 bg-slate-800 text-white rounded-md hover:bg-slate-900 transition"
             >
               Submit
             </button>
