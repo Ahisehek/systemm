@@ -597,7 +597,7 @@ function Dash() {
 
         {/*  CONTENT */}
         <div className="">
-          <div className="">
+          <div className=" bg-slate-200">
             <div className="flex justify-center pt-15">
               <Outlet />
             </div>
