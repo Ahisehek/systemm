@@ -337,6 +337,8 @@ function Dash() {
       <div className="bg-slate-200 h-screen">
 
         {/*  NAVBAR */}
+
+
         <div className="bg-gradient-to-r from-slate-900 via-white to-slate-900 text-white font-bold fixed top-0 w-full z-50 shadow-md border-b border-blue-950">
           <div className="flex items-center justify-between px-4 sm:px-6 lg:px-10 h-14">
 
@@ -601,10 +603,10 @@ function Dash() {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
 
       {/* FOOTER */}
-      <Footer />
     </div>
   );
 }
