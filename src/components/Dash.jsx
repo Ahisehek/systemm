@@ -601,8 +601,10 @@ function Dash() {
             {/* <div className="flex justify-center pt-15">
               <Outlet />
             </div> */}
-            <div className="flex justify-center pt-16 h-[calc(100vh-56px)] overflow-auto hide-scrollbar">
-              <Outlet />
+            <div className="pt-16 h-[calc(100vh-56px)] overflow-hidden">
+              <div className="h-full overflow-auto hide-scrollbar flex justify-center">
+                <Outlet />
+              </div>
             </div>
           </div>
         </div>
