@@ -1,8 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 function TicketForm() {
+  const navigate = useNavigate();
   //clear the form after submitting
   const clearForm = () => {
     setFormData({
@@ -90,8 +92,13 @@ function TicketForm() {
       const response = await fetch("https://backendsystem-a26n.onrender.com/ticket/add", {
         method: "POST",
         body: form,
+        credentials: "include",
       });
-
+      if (response.status === 401 || response.status === 403) {
+        alert("Please login first!");
+        navigate("/");
+        return;
+      }
       if (response.ok) {
         const result = await response.json();
         console.log("Vehicle saved:", result);
@@ -102,7 +109,7 @@ function TicketForm() {
       }
     } catch (err) {
       console.error("Error submitting vehicle data:", err);
-      redirect("/");
+
       alert("Error saving vehicle data");
     }
   };
@@ -110,7 +117,7 @@ function TicketForm() {
   return (
     <>
       <div className="p-2">
-        <h2 className="text-2xl font-semibold text-white bg-gradient-to-r from-slate-200 via-slate-800 to-slate-200 mb-6 flex justify-center">
+        <h2 className="text-2xl font-semibold w-fit text-slate-800 bg-white flex justify-center">
           TICKETING EXPRESS
         </h2>
         <div className="w-300 mx-auto text-black   p-6 bg-white rounded shadow max-sm:w-100">

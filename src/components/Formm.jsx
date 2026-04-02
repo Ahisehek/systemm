@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const ItemForm = () => {
+  const navigate = useNavigate();
   //  useEffect(() => {
   //     const socket = io("http://localhost:5000", {
   //       withCredentials: true,
@@ -116,6 +118,11 @@ const ItemForm = () => {
         body: JSON.stringify(formData),
       });
 
+      if (response.status === 401 || response.status === 403) {
+        alert("Unauthorized! Please login first");
+        navigate("/");   // ✅ redirect to login
+        return;
+      }
       const result = await response.json();
       if (response.ok) {
         console.log("Item added:", result);
@@ -135,7 +142,6 @@ const ItemForm = () => {
       }
     } catch (error) {
       console.error("Error during form submission:", error);
-      redirect("/");
       alert("Error during form submission");
     }
   };
@@ -143,7 +149,7 @@ const ItemForm = () => {
   return (
     <>
       <div className=" p-2 ">
-        <h2 className="text-2xl  font-semibold mb-4 text-white bg-gradient-to-r from-slate-200 via-slate-800 to-slate-200 flex justify-center">
+        <h2 className="text-2xl  font-semibold w-fit text-slate-800 bg-white flex justify-center">
           NEW ITEM
         </h2>
         <form

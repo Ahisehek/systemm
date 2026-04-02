@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 function VehicleForm() {
+  const navigate = useNavigate();
   const [sites, setSites] = useState([]);
   const [fleetList, setFleetList] = useState([]);
 
@@ -113,7 +115,13 @@ function VehicleForm() {
       const response = await fetch("https://backendsystem-a26n.onrender.com/vehicle/add", {
         method: "POST",
         body: form,
+        credentials: "include",
       });
+      if (response.status === 401 || response.status === 403) {
+        alert("Please login first!");
+        navigate("/");
+        return;
+      }
 
       if (response.ok) {
         const result = await response.json();
@@ -124,7 +132,7 @@ function VehicleForm() {
       }
     } catch (err) {
       console.error("Error submitting vehicle data:", err);
-      redirect("/");
+
       alert("Error saving vehicle data");
     }
   };

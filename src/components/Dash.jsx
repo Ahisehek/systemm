@@ -334,7 +334,7 @@ function Dash() {
 
   return (
     <div>
-      <div className="bg-slate-200 h-screen overflow-hidden">
+      <div className="bg-slate-200 h-screen ">
 
         {/*  NAVBAR */}
 

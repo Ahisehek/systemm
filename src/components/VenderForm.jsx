@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const VendorForm = () => {
+  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const [bankList, setBankList] = useState([]);
@@ -117,7 +118,14 @@ const VendorForm = () => {
       const res = await fetch("https://backendsystem-a26n.onrender.com/vender/add", {
         method: "POST",
         body: form,
+        credentials: "include",
       });
+
+      if (res.status === 401 || res.status === 403) {
+        alert("Please login first!");
+        navigate("/");
+        return;
+      }
 
       if (!res.ok) throw new Error("Failed to add vendor");
 
@@ -159,14 +167,14 @@ const VendorForm = () => {
       if (formRef.current) formRef.current.reset();
     } catch (err) {
       console.error("Error submitting vendor:", err);
-      redirect("/");
+
       alert("Error submitting vendor, see console");
     }
   };
 
   return (
-    <div className="p-2 ">
-      <h2 className="text-2xl font-bold text-white bg-gradient-to-r from-slate-200 via-slate-800 to-slate-200 mb-6 flex justify-center">
+    <div className="p-2">
+      <h2 className="text-2xl font-bold text-slate-800 w-fit bg-white flex justify-center">
         NEW VENDOR
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black shadow rounded-lg max-sm:w-100">
