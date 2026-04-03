@@ -139,10 +139,10 @@ function VehicleForm() {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-semibold text-slate-800 bg-white rounded flex justify-center w-full">
+      <h2 className="text-2xl font-semibold text-slate-800 bg-white rounded flex justify-center ">
         NEW VEHICLE
       </h2>
-      <div className="w-300 mx-auto p-6 bg-white text-black rounded shadow max-sm:w-100">
+      <div className="w-300 mx-auto p-6 bg-white text-black rounded shadow max-sm:w-120">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Inputs */}
           <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">

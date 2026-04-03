@@ -149,12 +149,12 @@ const ItemForm = () => {
   return (
     <>
       <div className=" p-2 ">
-        <h2 className="text-2xl  font-semibold  text-slate-800 bg-white flex justify-center rounded w-full">
+        <h2 className="text-2xl  font-semibold  text-slate-800 bg-white flex justify-center rounded ">
           NEW ITEM
         </h2>
         <form
           onSubmit={handleSubmit}
-          className="w-300  mx-auto p-6 bg-white   text-black  rounded-lg shadow-md space-y-6  max-sm:w-100"
+          className="w-300  mx-auto p-6 bg-white   text-black  rounded-lg shadow-md space-y-6  max-sm:w-120"
         >
           <div className="grid grid-cols-2 gap-2 max-sm:grid max-sm:grid-cols-1">
             {/* Site Name */}
