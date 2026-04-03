@@ -117,10 +117,10 @@ function TicketForm() {
   return (
     <>
       <div className="p-2">
-        <h2 className="text-2xl font-semibold  text-slate-800 bg-white flex justify-center rounded w-full">
+        <h2 className="text-2xl font-semibold  text-slate-800 bg-white flex justify-center rounded ">
           TICKETING EXPRESS
         </h2>
-        <div className="w-300 mx-auto text-black   p-6 bg-white rounded shadow max-sm:w-100">
+        <div className="w-300 mx-auto text-black   p-6 bg-white rounded shadow max-sm:w-120">
           <form onSubmit={handleSubmit} className="space-y-5  gap-2">
             {/* Site */}
             <div className="grid grid-cols-2 gap-5    max-sm:grid max-sm:grid-cols-1">
