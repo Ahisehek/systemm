@@ -174,7 +174,7 @@ const VendorForm = () => {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-bold text-slate-800  bg-white flex justify-center rounded">
+      <h2 className="text-2xl font-bold text-slate-800  bg-white flex justify-center rounded w-full">
         NEW VENDOR
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black shadow rounded-lg max-sm:w-100">

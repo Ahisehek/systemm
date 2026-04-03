@@ -139,7 +139,7 @@ function VehicleForm() {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-semibold text-slate-800 bg-white rounded flex justify-center">
+      <h2 className="text-2xl font-semibold text-slate-800 bg-white rounded flex justify-center w-full">
         NEW VEHICLE
       </h2>
       <div className="w-300 mx-auto p-6 bg-white text-black rounded shadow max-sm:w-100">

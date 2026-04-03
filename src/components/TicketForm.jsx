@@ -117,7 +117,7 @@ function TicketForm() {
   return (
     <>
       <div className="p-2">
-        <h2 className="text-2xl font-semibold  text-slate-800 bg-white flex justify-center rounded">
+        <h2 className="text-2xl font-semibold  text-slate-800 bg-white flex justify-center rounded w-full">
           TICKETING EXPRESS
         </h2>
         <div className="w-300 mx-auto text-black   p-6 bg-white rounded shadow max-sm:w-100">
